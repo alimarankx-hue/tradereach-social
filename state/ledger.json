@@ -1,1 +1,11 @@
-{}
+{
+ "test-reel-under-a-house": {
+  "type": "reel",
+  "status": "published",
+  "attempts": 1,
+  "media_id": "18087183488713792",
+  "permalink": "https://www.instagram.com/reel/DfkWlZnCf57/",
+  "at": "2026-11-10T16:38:18.000Z",
+  "note": "recorded by hand: first run did not save state (fixed)"
+ }
+}
