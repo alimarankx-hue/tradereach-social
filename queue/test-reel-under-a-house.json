@@ -1,0 +1,40 @@
+{
+ "id": "test-reel-under-a-house",
+ "type": "reel",
+ "secs": 2.6,
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "POV · Tuesday, 2:14 pm",
+   "text": "You're under\na *house.*"
+  },
+  {
+   "t": "calls",
+   "text": "Phone\n*rings.*",
+   "calls": [
+    [
+     "Incoming call",
+     "Mobile · 2:14 pm"
+    ]
+   ]
+  },
+  {
+   "t": "title",
+   "text": "Hands full.\nCan't *answer.*"
+  },
+  {
+   "t": "title",
+   "text": "Do they leave a voicemail… *or ring the next tradie?*"
+  },
+  {
+   "t": "sms",
+   "text": "Or they get a *text back* straight away."
+  },
+  {
+   "t": "end",
+   "text": "Missed the call? It still gets *answered.*"
+  }
+ ],
+ "caption": "You're on the tools. Your next customer is calling. 📞\nUnder a house, up a ladder or behind the wheel, you can't always pick up. And a caller who can't reach you might just ring the next tradie on the list.\nTradeReach texts every missed caller back within moments, asks what they need and sends the job details to your phone, so you can call back ready when you're off the tools.\n👉 See how it works at tradereach.net (live demo, no signup)\n#tradiesofaustralia #australiantradies #tradielife #smallbusinessaustralia #tradiebusiness",
+ "publish_at": "2026-11-10T16:35:48.431Z"
+}
