@@ -1,0 +1,50 @@
+{
+ "id": "2026-11-12-reel-2",
+ "type": "reel",
+ "pillar": "trade:roofing",
+ "publish_at": "2026-11-12T07:00:00.000Z",
+ "caption": "Storm rolls through and every roofer's phone lights up at once. ⛈️\nYou're on someone else's roof and can't answer. A homeowner watching water come through the ceiling can't sit around waiting.\nTradeReach texts them back within moments, flags roof leaks to you as an emergency straight away, and asks single or double storey so you call back ready.\n👉 See how it works at tradereach.net\n#roofingaustralia #roofer #stormseason #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Storm night",
+   "text": "Water through the ceiling.\nThey ring *you.*"
+  },
+  {
+   "t": "calls",
+   "text": "You're up on *another roof.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 2 min ago"
+    ],
+    [
+     "Missed call",
+     "Mobile · 9 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "title",
+   "text": "A leaking ceiling doesn't wait for a *callback.*"
+  },
+  {
+   "t": "body",
+   "kicker": "What happens instead",
+   "text": "You get an *urgent alert* straight away.",
+   "body": "Storm and roof leaks are flagged as emergencies before the details are finished."
+  },
+  {
+   "t": "jobcard",
+   "text": "Then the *details*: suburb, storeys, what's leaking."
+  },
+  {
+   "t": "end",
+   "text": "Storm season. *Every caller* hears back."
+  }
+ ]
+}

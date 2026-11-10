@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-12-story-1",
+ "type": "story",
+ "pillar": "trade:electrical",
+ "publish_at": "2026-11-11T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Sparkies",
+   "text": "Power's out at their place.\nSparky's busy at a *switchboard.*",
+   "body": "Who's ringing them back? Reply and tell us."
+  }
+ ]
+}

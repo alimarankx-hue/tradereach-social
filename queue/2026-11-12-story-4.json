@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-12-story-4",
+ "type": "story",
+ "pillar": "trade:landscaping",
+ "publish_at": "2026-11-12T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Landscapers",
+   "text": "Spring rush.\nMore calls than *daylight.*",
+   "body": "How many voicemails are sitting on your phone right now? Reply with a number."
+  }
+ ]
+}

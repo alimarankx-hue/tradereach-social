@@ -1,0 +1,54 @@
+{
+ "id": "2026-11-12-carousel-1",
+ "type": "carousel",
+ "pillar": "tips",
+ "publish_at": "2026-11-12T01:00:00.000Z",
+ "caption": "Five moments in a tradie's day when the phone always rings. Which one's you? 👇\nEach one is a caller you might not hear from again if nobody gets back to them.\nTradeReach texts every missed caller back within moments, asks what they need and sends you one clear job summary.\n👉 Try the live demo at tradereach.net, no signup\n#australiantradies #tradielife #smallbusinessaustralia #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Swipe →",
+   "text": "When does your phone *always* ring?",
+   "body": "Five moments every tradie knows. Which one's you?"
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": false,
+   "text": "Halfway up a *ladder.*",
+   "body": "Painters, sparkies, gutter jobs. Both hands busy, phone in the back pocket."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": false,
+   "text": "Mid-quote on *site.*",
+   "body": "Walking a pergola job with the homeowner. Answering now looks rude to the person in front of you."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": false,
+   "text": "Running the *mower.*",
+   "body": "Landscapers and gardeners. You won't hear it ring, let alone answer it."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": false,
+   "text": "*School pick-up.*",
+   "body": "Kids in the car, a line of traffic. Not the time to talk about a blocked drain."
+  },
+  {
+   "t": "rule",
+   "num": "05",
+   "ok": true,
+   "text": "Every one gets a *text back.*",
+   "body": "It asks what they need, then sends you a clear job summary. You call back ready."
+  },
+  {
+   "t": "end",
+   "text": "Miss the call. *Not the job.*"
+  }
+ ]
+}

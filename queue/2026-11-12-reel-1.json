@@ -1,0 +1,45 @@
+{
+ "id": "2026-11-12-reel-1",
+ "type": "reel",
+ "pillar": "trade:aircon",
+ "publish_at": "2026-11-11T23:00:00.000Z",
+ "caption": "First hot week of the season and you're in a roof cavity fitting a split system. 🥵\nThe phone buzzes in your pocket and you can't get to it. A caller with a dead aircon in this heat might just ring the next number on the list.\nTradeReach texts every missed caller back within moments, asks split, ducted or other, and sends you a clear job summary so you call back ready.\n👉 Try the live demo at tradereach.net, no signup\n#aircontech #hvacaustralia #australiantradies #tradielife #summerready",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "POV · first hot arvo of the season",
+   "text": "Roof cavity.\nFeels like a *sauna.*"
+  },
+  {
+   "t": "calls",
+   "text": "Meanwhile, your phone *buzzes.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 4 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "title",
+   "text": "Their aircon's dead.\nThey're not waiting *long.*"
+  },
+  {
+   "t": "sms",
+   "text": "So they get a *text back* while you're still up there."
+  },
+  {
+   "t": "jobcard",
+   "text": "Down the ladder, the *job summary's* waiting.",
+   "small": "Split, ducted or other. Brand if they mention it."
+  },
+  {
+   "t": "end",
+   "text": "Stay on the tools. Still *call back ready.*"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-12-story-3",
+ "type": "story",
+ "pillar": "how-it-works",
+ "publish_at": "2026-11-12T04:00:00.000Z",
+ "scenes": [
+  {
+   "t": "body",
+   "kicker": "Quick one",
+   "text": "Customers can text *\"dunny's blocked, arvo ok\"*",
+   "body": "It picks up the problem and a good time to call. Slang's fine. What's the funniest enquiry text you've had?"
+  }
+ ]
+}
