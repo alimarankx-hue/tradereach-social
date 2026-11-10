@@ -9,7 +9,7 @@ const BANNED = [
   [/\b(testimonial|review|rated|stars?|trusted by|clients?|our (customers|users)|customers? (say|love)|thousands|hundreds|millions?)\b/i, 'social proof'],
   [/\b(studies|study|research|survey|statistic|on average|average tradie|most tradies|\d+ in \d+)\b/i, 'statistic'],
   [/#1\b|\bnumber one\b|\bbest\b(?! time)|\bguarantee/i, 'superlative or guarantee'],
-  [/\bnever miss (a|another|any)\b|\bmore jobs\b|\bdouble\b|\btriple\b/i, 'overpromise'],
+  [/\bnever miss (a|another|any)\b|\bmore jobs\b|\bdouble\b(?! storey)|\btriple\b/i, 'overpromise'],
   [/\bAI\b|artificial intelligence|chatgpt|\bgpt\b|machine learning/i, 'AI claim (product is rule-based)'],
   [/(?<!never )\bbooks? (a |the |your )?(job|appointment)s?\b|(?<!never )\bquotes (a |the )?(price|job)/i, 'claims it books or quotes'],
   [/\bwe hear\b|\btradies tell us\b|\bour (data|results)\b/i, 'implied customer evidence'],
