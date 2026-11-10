@@ -1,7 +1,7 @@
 // Renders one content item (JSON spec) to Instagram-ready files: HTML scenes -> PNG (headless Chrome) -> JPEG / MP4 (FFmpeg).
 // CLI: node src/render.mjs <spec.json ...>   -> out/<id>/...
 import { execFileSync, spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync, rmSync, existsSync, statSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, existsSync, statSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve, basename } from 'node:path';
 import { tmpdir } from 'node:os';
 import { setTimeout as sleep } from 'node:timers/promises';
@@ -96,7 +96,11 @@ async function shot(dir, name, scene, item) {
 const ff = (args) => execFileSync(FFMPEG, ['-v', 'error', '-y', ...args], { stdio: 'inherit' });
 
 // Stills -> MP4 meeting Meta's Reel/Story spec: H.264 yuv420p, 30 fps, closed GOP, moov at front, AAC 48 kHz.
-function video(pngs, secs, out) {
+// Our own synthesized loops (src/music.mjs). Picked from the post ID so posts vary but re-renders match.
+const MUSIC = existsSync(join(ROOT, 'assets/music')) ? readdirSync(join(ROOT, 'assets/music')).filter((f) => f.endsWith('.m4a')).sort() : [];
+const trackFor = (id) => MUSIC.length ? join(ROOT, 'assets/music', MUSIC[[...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % MUSIC.length]) : null;
+
+function video(pngs, secs, out, music) {
   const fps = 30, fade = 0.35, frames = Math.round(secs * fps);
   const inputs = pngs.flatMap((p) => ['-loop', '1', '-t', String(secs), '-i', p]);
   const parts = pngs.map((_, i) =>
@@ -108,8 +112,10 @@ function video(pngs, secs, out) {
     last = `x${i}`;
   }
   const total = Math.max(3.2, secs * pngs.length - fade * (pngs.length - 1)); // Meta minimum is 3 s
-  ff([...inputs, '-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=48000:cl=stereo',
-    '-filter_complex', [...parts, ...chain].join(';'), '-map', `[${last}]`, '-map', `${pngs.length}:a`,
+  const audioIn = music ? ['-stream_loop', '-1', '-i', music] : ['-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=48000:cl=stereo'];
+  const audio = `[${pngs.length}:a]atrim=0:${total},afade=t=in:d=0.4,afade=t=out:st=${Math.max(0, total - 1.2).toFixed(2)}:d=1.2,volume=0.85[aud]`;
+  ff([...inputs, ...audioIn,
+    '-filter_complex', [...parts, ...chain, audio].join(';'), '-map', `[${last}]`, '-map', '[aud]',
     '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-r', String(fps), '-g', '60', '-crf', '20',
     '-maxrate', '8M', '-bufsize', '16M', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000',
     '-movflags', '+faststart', '-t', String(total), out]);
@@ -127,7 +133,7 @@ export async function renderItem(item, outRoot = join(ROOT, 'out')) {
   let files;
   if (isVideo(item)) {
     files = [join(dir, `${item.id}.mp4`)];
-    video(pngs, item.secs || 2.6, files[0]);
+    video(pngs, item.secs || 2.6, files[0], item.music === false ? null : trackFor(item.id));
   } else {
     files = pngs.map((p, i) => join(dir, `${item.id}-${i + 1}.jpg`));
     pngs.forEach((p, i) => ff(['-i', p, '-q:v', '2', files[i]]));

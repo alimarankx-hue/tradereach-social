@@ -31,5 +31,5 @@ Details are in the Actions log and `state/ledger.json`.
 ## Limits
 - Topic research uses web search for timely ideas only; figures are never quoted.
 - The guard catches common bad claims, but it can't prove a sentence is true. Keep `content/facts.md` accurate.
-- Reels are animated text with no voiceover or music. Instagram's API only supports original audio.
+- Reels and Story videos carry our own synthesized music (`assets/music/`, made by `src/music.mjs`), because Instagram's API can't add tracks from its music library. There's no voiceover.
 - Website visits and leads are tracked only as profile link taps. TradeReach production is deliberately not touched.
