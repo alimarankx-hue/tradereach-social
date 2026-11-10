@@ -1,0 +1,11 @@
+{
+ "id": "sample-story-02-job-card",
+ "type": "story",
+ "scenes": [
+  {
+   "t": "jobcard",
+   "text": "The job lands on *your phone.*",
+   "small": "Try it live at tradereach.net"
+  }
+ ]
+}

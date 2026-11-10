@@ -1,0 +1,33 @@
+{
+ "id": "sample-reel-02-keep-your-number",
+ "type": "reel",
+ "secs": 2.8,
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Fair question",
+   "text": "\"Do I need a new *number?\""
+  },
+  {
+   "t": "body",
+   "text": "*Nope.*",
+   "body": "Customers keep ringing the number they already have."
+  },
+  {
+   "t": "body",
+   "text": "Calls you *answer*",
+   "body": "work exactly like they do now."
+  },
+  {
+   "t": "body",
+   "text": "Calls you *miss*",
+   "body": "get forwarded, and every missed caller gets a text back.",
+   "small": "Call forwarding for unanswered calls, where your carrier supports it."
+  },
+  {
+   "t": "end",
+   "text": "Same number. Fewer *missed jobs.*"
+  }
+ ],
+ "caption": "No, you don't need a new phone number.\nYour customers keep ringing the number they already have. You switch on call forwarding for calls you don't answer (where your carrier supports it). Calls you pick up work exactly like now.\nOnly the missed ones get the text-back.\n👉 Try the live demo, link in bio.\n#tradiesofaustralia #australiantradies #tradielife #smallbusinessaustralia #tradiebusiness"
+}

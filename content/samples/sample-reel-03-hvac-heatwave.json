@@ -1,0 +1,48 @@
+{
+ "id": "sample-reel-03-hvac-heatwave",
+ "type": "reel",
+ "secs": 2.6,
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs, you know this one",
+   "text": "First *38°* day of summer."
+  },
+  {
+   "t": "calls",
+   "text": "Every aircon tech's phone:",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 6 min ago"
+    ],
+    [
+     "Missed call",
+     "Mobile · 11 min ago"
+    ],
+    [
+     "Missed call",
+     "Mobile · 19 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "title",
+   "text": "You can't answer them *all.*"
+  },
+  {
+   "t": "body",
+   "text": "Missed callers get a *text back.*",
+   "body": "It asks split, ducted or other, notes the brand if they mention it, and asks for a good time to call."
+  },
+  {
+   "t": "end",
+   "text": "You call back with the job *already scoped.*"
+  }
+ ],
+ "caption": "First proper heatwave and the phone doesn't stop. Peak season means more calls than you can physically answer.\nTradeReach texts the ones you miss and asks split, ducted or other, notes the brand if they mention it, and asks for a good time to call.\nYou call back with the job already scoped.\n👉 Try the live demo, link in bio.\n#hvaclife #airconditioning #aircon #hvactechnician #tradiesofaustralia"
+}

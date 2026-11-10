@@ -1,0 +1,17 @@
+{
+ "id": "sample-story-03-new-reel",
+ "type": "story",
+ "secs": 2.2,
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "New Reel",
+   "text": "You're under a *house.*"
+  },
+  {
+   "t": "body",
+   "text": "Phone *rings.*",
+   "body": "What happens next? Tap through to our profile 👆"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "id": "sample-carousel-01-never-does",
+ "type": "carousel",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Automated text-back",
+   "text": "5 things it will *never* do.",
+   "body": "Swipe →"
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "text": "Never books a job, or says one is booked."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "text": "Never quotes a price.",
+   "body": "That's your call."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "text": "Never promises a callback time."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": true,
+   "text": "Always says it's automated in the first text."
+  },
+  {
+   "t": "rule",
+   "num": "05",
+   "ok": true,
+   "text": "STOP means stop.",
+   "body": "Opted-out numbers get nothing more."
+  },
+  {
+   "t": "end",
+   "text": "It collects the details. *You run the job.*"
+  }
+ ],
+ "caption": "Fair question about any automated text: \"What if it says something dumb to my customer?\"\nEvery outgoing text is checked against fixed rules before it's sent, and anything that breaks them is blocked.\nWhat else would you want it to never do? 👇\n#tradiesofaustralia #australiantradies #tradielife #smallbusinessaustralia #tradiebusiness"
+}
