@@ -11,8 +11,9 @@
    "body": "Do you stop, or ring back later? Reply and tell us."
   },
   {
-   "t": "sms",
-   "text": "Or they get a *text back* and you finish the room."
+   "t": "body",
+   "text": "Or they get a *text back* and you finish the room.",
+   "body": "It asks what they need and sends you the details."
   }
  ]
 }

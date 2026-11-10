@@ -28,6 +28,7 @@ Tone: Australian English, tradie to tradie, plain, a bit of dry humour, confiden
 - Only state what is in `content/facts.md`. If it isn't there, don't say it.
 - TradeReach is **rule-based automated text-back**. Never call it AI, AI-powered or smart assistant. ("TradeReach AI" appears only in the logo.)
 - It **never books jobs, quotes or promises callback times**: the tradie does that. You may say it helps them "win the job" or "call back ready", but never say it books.
+- No line may imply a caller or job is never lost ("Miss the call. Not the job.", "never lose a lead"). Say what it does (texts back, sends the details, you call back ready), not what it guarantees.
 - No statistics, percentages, dollar amounts, customer counts, testimonials, reviews, "we hear", guarantees or prices.
 - No phone numbers, emails, @mentions, other brands or links other than tradereach.net. No song lyrics, film quotes or copyrighted material.
 - Questions to the audience are welcome ("Which one's you?").
@@ -55,8 +56,9 @@ Scenes. Use `*word*` to highlight one or two key words and `\n` for a line break
 - `{"t":"title","kicker"?:"...","text":"...","body"?:"..."}`
 - `{"t":"body","kicker"?:"...","text":"...","body"?:"...","small"?:"..."}`
 - `{"t":"calls","text":"...","calls":[["Missed call","Mobile · just now"], ...up to 4]}`: a phone screen of missed calls
-- `{"t":"sms","text":"..."}`: shows the fixed demo text message (labelled demo)
-- `{"t":"jobcard","text":"...","small"?:"..."}`: shows the fixed demo job summary (labelled demo)
+- `{"t":"sms","text":"..."}`: shows the fixed demo text message from the fictional *Smith Plumbing* (labelled demo)
+- `{"t":"jobcard","text":"...","small"?:"..."}`: shows the fixed demo job summary, a *burst pipe in Bondi* (labelled demo)
+  Use `sms` and `jobcard` **only in plumbing or general how-it-works posts**. In any other trade's post they would show a plumbing example, so use a `body` scene to describe the text-back and job summary instead.
 - `{"t":"rule","num":"01","ok":true|false,"text":"...","body"?:"..."}`: numbered carousel slide with ✓ or ✕
 - `{"t":"end","text":"..."}`: logo plus the "Try the live demo · tradereach.net" button
 

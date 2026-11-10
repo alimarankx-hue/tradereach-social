@@ -39,8 +39,9 @@
    "body": "Storm and roof leaks are flagged as emergencies before the details are finished."
   },
   {
-   "t": "jobcard",
-   "text": "Then the *details*: suburb, storeys, what's leaking."
+   "t": "body",
+   "text": "Then the *details*: suburb, storeys, what's leaking.",
+   "body": "Single or double storey, photos taken from the ground, a good time to call."
   },
   {
    "t": "end",

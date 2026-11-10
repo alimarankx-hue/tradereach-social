@@ -29,13 +29,14 @@
    "text": "Their aircon's dead.\nThey're not waiting *long.*"
   },
   {
-   "t": "sms",
-   "text": "So they get a *text back* while you're still up there."
+   "t": "body",
+   "text": "So they get a *text back* while you're still up there.",
+   "body": "It says it's an automated reply and asks what they need."
   },
   {
-   "t": "jobcard",
+   "t": "body",
    "text": "Down the ladder, the *job summary's* waiting.",
-   "small": "Split, ducted or other. Brand if they mention it."
+   "body": "Split, ducted or other. Brand if they mention it. A good time to call."
   },
   {
    "t": "end",
