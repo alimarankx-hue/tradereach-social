@@ -31,8 +31,8 @@ jobs:
       CHROME_PATH: /usr/bin/google-chrome
       FFMPEG_PATH: /usr/bin/ffmpeg
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 22 }
 
       - name: Anything to do?
@@ -48,7 +48,12 @@ jobs:
 
       - name: Plan tomorrow (after 2 pm Sydney, once a day)
         if: steps.work.outputs.go == 'true'
+        continue-on-error: ${{ inputs.dry_run == true }}
         run: node src/prepare.mjs
+
+      - name: Render the approved samples (dry run only)
+        if: env.DRY_RUN == '1'
+        run: node src/render.mjs content/samples/*.json
 
       - name: Publish due posts
         if: steps.work.outputs.go == 'true'
@@ -60,7 +65,7 @@ jobs:
 
       - name: Keep dry-run renders for review
         if: always() && env.DRY_RUN == '1'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: dry-run-renders
           path: |
