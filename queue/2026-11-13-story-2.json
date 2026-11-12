@@ -1,0 +1,19 @@
+{
+ "id": "2026-11-13-story-2",
+ "type": "story",
+ "pillar": "trade:air-conditioning",
+ "publish_at": "2026-11-13T00:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "First hot week.\nEveryone's split system *quits.*",
+   "body": "How many calls land while you're up a ladder? Reply below."
+  },
+  {
+   "t": "body",
+   "text": "Each one gets a *text back.*",
+   "body": "It asks split, ducted or other, and the brand if they mention it. Try the demo at tradereach.net."
+  }
+ ]
+}

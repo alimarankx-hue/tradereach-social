@@ -1,0 +1,33 @@
+{
+ "id": "2026-11-13-reel-2",
+ "type": "reel",
+ "pillar": "trade:carpentry",
+ "publish_at": "2026-11-13T07:00:00.000Z",
+ "caption": "Everyone wants a new deck before Christmas, and they all ring while the drop saw's running.\nA missed enquiry can quietly become someone else's deck.\nTradeReach texts every missed caller back within moments, asks the deck size, their email and for photos, then sends you one clear job summary.\n👉 Try the live demo at tradereach.net, no signup\n#carpentry #deckbuilder #australiantradies #tradielife",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Chippies",
+   "text": "\"Can we have a deck\nby *Christmas?*\""
+  },
+  {
+   "t": "body",
+   "text": "Drop saw screaming.\nEar muffs on.\nPhone *ringing.*"
+  },
+  {
+   "t": "body",
+   "text": "They wanted an answer *today.*",
+   "body": "If nobody gets back to them, they might try the next chippie."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "They get a *text back.*",
+   "body": "It asks the deck size, their email and for a few photos. You get one clear job summary."
+  },
+  {
+   "t": "end",
+   "text": "Smoko. Read the summary. *Call back.*"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "id": "2026-11-13-reel-1",
+ "type": "reel",
+ "pillar": "trade:roofing",
+ "publish_at": "2026-11-12T23:00:00.000Z",
+ "caption": "Storm rolls through. Every roofer's phone lights up at once, while you're already up on someone else's roof.\nThe callers you don't get back to might ring the next roofer on the list.\nTradeReach texts each missed caller back within moments, asks single or double storey and for photos from the ground, and flags storm leaks to you straight away.\n👉 See how it works at tradereach.net\n#roofingaustralia #stormseason #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Roofers",
+   "text": "Storm's passed.\nNow every ceiling's *dripping.*"
+  },
+  {
+   "t": "calls",
+   "text": "And you're on a roof *already.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 2 min ago"
+    ],
+    [
+     "Missed call",
+     "Mobile · 5 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "Who rings them *back first?*",
+   "body": "Whoever gets back to them first can end up with the job."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks single or double storey and for photos from the ground. Storm leaks get flagged to you straight away."
+  },
+  {
+   "t": "end",
+   "text": "Climb down. *Call back ready.*"
+  }
+ ]
+}

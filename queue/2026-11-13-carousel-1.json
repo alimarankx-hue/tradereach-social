@@ -1,0 +1,54 @@
+{
+ "id": "2026-11-13-carousel-1",
+ "type": "carousel",
+ "pillar": "tips",
+ "publish_at": "2026-11-13T01:00:00.000Z",
+ "caption": "Pre-Christmas rush: the busiest time to be hard to reach. Which one's you? 👇\nEvery unanswered call this month can mean a job that goes elsewhere, and work after it too.\nTradeReach texts each missed caller back within moments, asks what they need and sends you one clear job summary. You quote, book and call back.\n👉 Try the live demo at tradereach.net, no signup\n#australiantradies #smallbusinessaustralia #tradiebusiness #christmasrush",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Swipe →",
+   "text": "Five calls that come in *before Christmas.*",
+   "body": "And where you usually are when they ring."
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": false,
+   "text": "\"Aircon's *dead.*\"",
+   "body": "Rings while you're in a roof cavity fitting someone else's ducted system."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": false,
+   "text": "\"Pergola before the *party?*\"",
+   "body": "Rings while you're setting posts in concrete. Can't let go."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": false,
+   "text": "\"Can you paint the *lounge?*\"",
+   "body": "Rings while you're cutting in a ceiling, brush in hand."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": false,
+   "text": "\"Fairy lights tripped the *power.*\"",
+   "body": "Rings while you're halfway through another switchboard job."
+  },
+  {
+   "t": "rule",
+   "num": "05",
+   "ok": true,
+   "text": "Every one gets a *text back.*",
+   "body": "It asks what they need for that trade, then sends you a clear job summary. You call back ready."
+  },
+  {
+   "t": "end",
+   "text": "Busy season. *Still easy to reach.*"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-13-story-1",
+ "type": "story",
+ "pillar": "trade:handyman",
+ "publish_at": "2026-11-12T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Handymen",
+   "text": "Ten small jobs on the list.\nPhone rings during *every one.*",
+   "body": "What do you do with the calls? Reply and tell us."
+  }
+ ]
+}
