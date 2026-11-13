@@ -79,6 +79,18 @@
   "2026-11-12-story-3": {
    "at": "2026-11-12T23:16:29.062Z",
    "metrics": {}
+  },
+  "2026-11-13-reel-1": {
+   "at": "2026-11-13T01:46:22.728Z",
+   "metrics": {
+    "reach": 1,
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "saved": 0,
+    "shares": 0,
+    "total_interactions": 0
+   }
   }
  },
  "account": {
