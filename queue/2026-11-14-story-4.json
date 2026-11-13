@@ -1,0 +1,18 @@
+{
+ "id": "2026-11-14-story-4",
+ "type": "story",
+ "pillar": "trade:aircon",
+ "publish_at": "2026-11-14T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "Split or ducted?\nYou'll know *before you ring.*"
+  },
+  {
+   "t": "body",
+   "text": "Brand too, if they *mention it.*",
+   "body": "What's the first thing you ask a caller? Reply and tell us."
+  }
+ ]
+}

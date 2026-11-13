@@ -1,0 +1,39 @@
+{
+ "id": "2026-11-14-reel-2",
+ "type": "reel",
+ "pillar": "trade:electrical",
+ "publish_at": "2026-11-14T07:00:00.000Z",
+ "caption": "You're up a ladder swapping downlights. Someone's ringing because a powerpoint is sparking at their place.\nA call like that can't sit in voicemail, and an unanswered one can send them to whoever picks up.\nTradeReach texts them back within moments with fixed safety wording, and you get an urgent alert before the details are even finished.\n👉 Try the live demo at tradereach.net, no signup\n#electricianaustralia #sparky #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Sparkies",
+   "text": "Up a ladder.\nBoth hands on a *downlight.*"
+  },
+  {
+   "t": "calls",
+   "text": "Meanwhile, a powerpoint's *sparking.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "That one can't *wait.*",
+   "body": "Leave it unanswered and they might ring whoever picks up first."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "They get a text back. You get an *alert.*",
+   "body": "Fixed safety wording goes to them. An urgent alert reaches you before the details are finished."
+  },
+  {
+   "t": "end",
+   "text": "Come down the ladder *knowing.*"
+  }
+ ]
+}

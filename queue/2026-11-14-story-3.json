@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-14-story-3",
+ "type": "story",
+ "pillar": "trade:cleaning",
+ "publish_at": "2026-11-14T04:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Cleaners",
+   "text": "End-of-lease clean.\nOven door *off.*",
+   "body": "Where's your phone right now? Reply and tell us."
+  }
+ ]
+}

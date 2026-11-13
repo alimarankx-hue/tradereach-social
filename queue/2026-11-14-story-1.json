@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-14-story-1",
+ "type": "story",
+ "pillar": "trade:painting",
+ "publish_at": "2026-11-13T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Painters",
+   "text": "Roller in one hand.\nTray in the *other.*",
+   "body": "Who answers your phone mid-coat? Reply and tell us."
+  }
+ ]
+}

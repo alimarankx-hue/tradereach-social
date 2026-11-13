@@ -1,0 +1,49 @@
+{
+ "id": "2026-11-14-carousel-1",
+ "type": "carousel",
+ "pillar": "how-it-works",
+ "publish_at": "2026-11-14T01:00:00.000Z",
+ "caption": "Voicemail at 7am, again at lunch, again after dinner. By the time you ring back, they might have gone with someone else.\nSlow follow-ups can cost the job, and the work that might come after it.\nTradeReach texts every missed caller back within moments, picks up name, suburb, problem and a good time to call, and sends you one job summary.\n👉 Try the live demo at tradereach.net, no signup\n#australiantradies #smallbusinessaustralia #tradiebusiness #plumbingaustralia",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Swipe →",
+   "text": "Voicemail vs a *text back.*",
+   "body": "Same missed call. Two very different arvos."
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": false,
+   "text": "Voicemail: *\"call me back\"*",
+   "body": "No name, no suburb, no idea what the job is. You ring back blind."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": false,
+   "text": "Voicemail: they *wait.*",
+   "body": "Nothing comes back for hours, so they might keep ringing around."
+  },
+  {
+   "t": "sms",
+   "text": "Text back: they hear from you *in moments.*"
+  },
+  {
+   "t": "jobcard",
+   "text": "Text back: you get the *details.*",
+   "small": "Name, suburb, problem and a good time to call."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": true,
+   "text": "You call back *ready.*",
+   "body": "You still quote and book. It just means you know the job before you dial."
+  },
+  {
+   "t": "end",
+   "text": "Swap the beep for a *text back.*"
+  }
+ ]
+}

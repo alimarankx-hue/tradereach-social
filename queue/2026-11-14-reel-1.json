@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-14-reel-1",
+ "type": "reel",
+ "pillar": "trade:landscaping",
+ "publish_at": "2026-11-13T23:00:00.000Z",
+ "caption": "Saturday. Mower's roaring, ear muffs on, and the phone's vibrating in the ute.\nThat caller wanted a backyard redone before summer. If nobody gets back to them, they might try the next landscaper.\nTradeReach texts each missed caller back within moments, asks the rough area and for photos, and sends you one clear job summary.\n👉 See how it works at tradereach.net\n#landscapingaustralia #australiantradies #tradiebusiness #backyardmakeover",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Landscapers",
+   "text": "Ear muffs on.\nMower *flat out.*"
+  },
+  {
+   "t": "calls",
+   "text": "Phone's in the *ute.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 6 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "They want it done *before summer.*",
+   "body": "If nobody gets back to them, they might ring the next landscaper they find."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks the rough area and for a few photos, then sends you a clear job summary."
+  },
+  {
+   "t": "end",
+   "text": "Finish the edges. *Call back ready.*"
+  }
+ ]
+}
