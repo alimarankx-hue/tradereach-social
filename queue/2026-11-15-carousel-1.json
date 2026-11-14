@@ -1,0 +1,56 @@
+{
+ "id": "2026-11-15-carousel-1",
+ "type": "carousel",
+ "pillar": "tips",
+ "publish_at": "2026-11-15T01:00:00.000Z",
+ "caption": "A missed call that says nothing means ringing back blind, and sometimes ringing back too late.\nA slow, vague callback can cost the job and the work that might come after it.\nTradeReach texts every missed caller back within moments, picks up name, suburb, problem and a good time to call, and only asks for what's missing.\n👉 See how it works at tradereach.net\n#australiantradies #smallbusinessaustralia #tradiebusiness #plumbingaustralia",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Swipe →",
+   "text": "What you want to know\n*before you dial.*",
+   "body": "A quick checklist for every missed call."
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": true,
+   "text": "Their *name.*",
+   "body": "So you're not opening with \"sorry, who's this?\""
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": true,
+   "text": "The *suburb.*",
+   "body": "So you know if it fits around today's jobs."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": true,
+   "text": "The *problem.*",
+   "body": "In their words. Typos and slang like \"dunny\" are fine."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": true,
+   "text": "A good time *to call.*",
+   "body": "So you ring when they can actually talk."
+  },
+  {
+   "t": "sms",
+   "text": "TradeReach asks for it *by text.*"
+  },
+  {
+   "t": "jobcard",
+   "text": "You get it as *one summary.*",
+   "small": "You still quote and book. You just call back ready."
+  },
+  {
+   "t": "end",
+   "text": "Know the job *before you dial.*"
+  }
+ ]
+}

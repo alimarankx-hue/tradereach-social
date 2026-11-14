@@ -1,0 +1,47 @@
+{
+ "id": "2026-11-15-reel-1",
+ "type": "reel",
+ "pillar": "trade:roofing",
+ "publish_at": "2026-11-14T23:00:00.000Z",
+ "caption": "Storm season. You're harnessed on a roof, and the phone's ringing in your pocket where you can't reach it.\nThat caller has water coming in. Leave them hanging and they might ring the next roofer on the list.\nTradeReach texts each missed caller back within moments, asks single or double storey and for photos taken from the ground, and flags storm leaks to you straight away.\n👉 See how it works at tradereach.net\n#roofingaustralia #stormseason #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Roofers",
+   "text": "Harness clipped on.\nPhone *out of reach.*"
+  },
+  {
+   "t": "calls",
+   "text": "Storm last night. Leaks *today.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 4 min ago"
+    ],
+    [
+     "Missed call",
+     "Mobile · 9 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "Water's coming *in.*",
+   "body": "If nobody gets back to them, they might keep ringing until someone does."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks single or double storey and for photos from the ground. Storm leaks get flagged to you straight away."
+  },
+  {
+   "t": "end",
+   "text": "Climb down. *Call back ready.*"
+  }
+ ]
+}

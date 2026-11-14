@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-15-story-2",
+ "type": "story",
+ "pillar": "trade:building",
+ "publish_at": "2026-11-15T00:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Builders",
+   "text": "Concrete truck's *here.*\nPhone's ringing.",
+   "body": "Which one wins? Reply and tell us."
+  }
+ ]
+}

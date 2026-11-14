@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-15-reel-2",
+ "type": "reel",
+ "pillar": "trade:hvac",
+ "publish_at": "2026-11-15T07:00:00.000Z",
+ "caption": "You're brazing a line set on a split install. Torch lit, can't put it down, and the phone goes off again.\nFirst warm weekend, that's someone who wants their aircon sorted. An unanswered call can send them to whoever picks up first.\nTradeReach texts them back within moments, asks split, ducted or other and the brand if they mention it, then sends you one clear job summary.\n👉 Try the live demo at tradereach.net, no signup\n#airconditioning #hvacaustralia #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "Brazing a line set.\nCan't drop the *torch.*"
+  },
+  {
+   "t": "calls",
+   "text": "Warm weekend. Phone's *going off.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 12 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "They want it cool *before tonight.*",
+   "body": "Leave it unanswered and they might ring the next aircon tech they find."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "They get a *text back.*",
+   "body": "It asks split, ducted or other, and the brand if they mention it. You get a clear job summary."
+  },
+  {
+   "t": "end",
+   "text": "Finish the joint. *Then ring back.*"
+  }
+ ]
+}

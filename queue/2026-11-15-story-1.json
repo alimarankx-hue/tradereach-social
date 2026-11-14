@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-15-story-1",
+ "type": "story",
+ "pillar": "trade:plumbing",
+ "publish_at": "2026-11-14T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Plumbers",
+   "text": "Sunday lunch.\nSomeone's hot water's *gone.*",
+   "body": "Do you pick up on a Sunday? Reply yes or no."
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "id": "2026-11-15-story-3",
+ "type": "story",
+ "pillar": "trade:handyman",
+ "publish_at": "2026-11-15T04:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Handymen",
+   "text": "Hanging a door.\nPhone's in the *other room.*"
+  },
+  {
+   "t": "body",
+   "text": "Who rings them *back?*",
+   "body": "When do you get to your missed calls? Reply and tell us."
+  }
+ ]
+}

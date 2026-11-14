@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-15-story-4",
+ "type": "story",
+ "pillar": "trade:pergolas",
+ "publish_at": "2026-11-15T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Patio builders",
+   "text": "Measuring up one patio.\nAnother caller wants *a pergola.*",
+   "body": "What do you do when the second call comes in? Reply."
+  }
+ ]
+}
