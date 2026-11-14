@@ -1,7 +1,7 @@
 {
  "media": {
   "test-reel-under-a-house": {
-   "at": "2026-11-13T09:30:22.382Z",
+   "at": "2026-11-14T05:47:27.892Z",
    "metrics": {
     "reach": 1,
     "views": 1,
@@ -109,10 +109,10 @@
    }
   },
   "2026-11-13-reel-2": {
-   "at": "2026-11-13T09:30:22.382Z",
+   "at": "2026-11-14T05:47:27.892Z",
    "metrics": {
-    "reach": 0,
-    "views": 1,
+    "reach": 15,
+    "views": 15,
     "likes": 0,
     "comments": 0,
     "saved": 0,
