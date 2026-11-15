@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-16-reel-1",
+ "type": "reel",
+ "pillar": "trade:landscaping",
+ "publish_at": "2026-11-15T23:00:00.000Z",
+ "caption": "Pallet of turf on the driveway, sun climbing, and you've got to get it down before it cooks. Your phone's buzzing in the ute.\nThat's someone after a backyard done before Christmas. If nobody gets back to them, they might ring the next landscaper they find.\nTradeReach texts every missed caller back within moments, asks the rough area, their email and for photos, and sends you one clear job summary.\n👉 See how it works at tradereach.net\n#landscapingaustralia #landscaper #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Landscapers",
+   "text": "Pallet of turf.\nSun's *climbing.*"
+  },
+  {
+   "t": "calls",
+   "text": "Phone's in the *ute.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 12 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "They want it done by *Christmas.*",
+   "body": "Leave them waiting and they might go with whoever answers first."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks the rough area, their email and for photos, then sends you one clear job summary."
+  },
+  {
+   "t": "end",
+   "text": "Lay the turf. *Call back ready.*"
+  }
+ ]
+}

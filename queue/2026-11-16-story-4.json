@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-16-story-4",
+ "type": "story",
+ "pillar": "trade:hvac",
+ "publish_at": "2026-11-16T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "Clearing a filter\nbefore the *heat hits.*",
+   "body": "Is your phone flat out yet this month? Reply yes or no."
+  }
+ ]
+}

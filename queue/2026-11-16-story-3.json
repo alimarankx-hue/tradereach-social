@@ -1,0 +1,18 @@
+{
+ "id": "2026-11-16-story-3",
+ "type": "story",
+ "pillar": "trade:carpentry",
+ "publish_at": "2026-11-16T04:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Chippies",
+   "text": "Decking boards\n*half down.*"
+  },
+  {
+   "t": "body",
+   "text": "Missed a call? It asks *for you.*",
+   "body": "Deck size, email and photos come back by text. How many deck enquiries this week? Reply."
+  }
+ ]
+}

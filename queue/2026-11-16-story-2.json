@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-16-story-2",
+ "type": "story",
+ "pillar": "trade:painting",
+ "publish_at": "2026-11-16T00:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Painters",
+   "text": "Cutting in a ceiling line.\nSteady *hand.*",
+   "body": "Phone rings mid-cut. Do you stop or keep going? Reply below."
+  }
+ ]
+}

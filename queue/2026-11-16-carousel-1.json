@@ -1,0 +1,52 @@
+{
+ "id": "2026-11-16-carousel-1",
+ "type": "carousel",
+ "pillar": "how-it-works",
+ "publish_at": "2026-11-16T01:00:00.000Z",
+ "caption": "On the tools, you can't always grab the phone. Under a house, up a roof, mid-cut, driving.\nEvery call you can't take can be a job someone else gets, plus the work that comes after it.\nTradeReach texts each missed caller back within moments, asks what they need and sends you a clear job summary. You call back ready.\n👉 See how it works at tradereach.net\nWhich one's you? Tell us in the comments.\n#australiantradies #tradiebusiness #smallbusinessaustralia #tradielife",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Which one's you?",
+   "text": "Where's your phone\n*right now?*",
+   "body": "Swipe through. Be honest."
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": false,
+   "text": "On the dash of the *ute.*",
+   "body": "You're out the back with a wheelbarrow. It's ringing to nobody."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": false,
+   "text": "Back pocket, *under a house.*",
+   "body": "You can feel it buzzing. You can't reach it."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": false,
+   "text": "On the bench, *covered in dust.*",
+   "body": "Saw's running. You won't hear it till you knock off."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": true,
+   "text": "Doesn't matter. It *texts back.*",
+   "body": "Missed callers get a text within moments asking what they need."
+  },
+  {
+   "t": "jobcard",
+   "text": "You get the job *summary.*",
+   "small": "Name, suburb, problem, a good time to call."
+  },
+  {
+   "t": "end",
+   "text": "Wherever it is, *call back ready.*"
+  }
+ ]
+}

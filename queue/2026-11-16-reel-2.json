@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-16-reel-2",
+ "type": "reel",
+ "pillar": "trade:electrical",
+ "publish_at": "2026-11-16T07:00:00.000Z",
+ "caption": "You're feeding cable through a wall cavity with fish tape. Let go now and you start again. The phone rings anyway.\nThat caller might have half the house without power. Leave them hanging and they could be ringing another sparky in minutes.\nTradeReach texts them back within moments, asks if it's the whole property or part of it, and alerts you straight away if there's sparking, smoke or exposed wires.\n👉 Try the live demo at tradereach.net, no signup\n#electricianaustralia #sparky #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Sparkies",
+   "text": "Fish tape in the wall.\nLet go and you *start again.*"
+  },
+  {
+   "t": "calls",
+   "text": "Of course it *rings now.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 6 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "Half their house is *dark.*",
+   "body": "If nobody gets back to them, they might keep ringing until another sparky picks up."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "It texts back and *asks.*",
+   "body": "Whole property or part of it? Sparking, smoke or exposed wires get flagged to you straight away."
+  },
+  {
+   "t": "end",
+   "text": "Finish the run. *Call back ready.*"
+  }
+ ]
+}

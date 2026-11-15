@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-16-story-1",
+ "type": "story",
+ "pillar": "trade:cleaning",
+ "publish_at": "2026-11-15T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Cleaners",
+   "text": "Bond clean.\nThree bathrooms *to go.*",
+   "body": "Do you check your phone between rooms or at the end? Reply and tell us."
+  }
+ ]
+}
