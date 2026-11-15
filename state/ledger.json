@@ -241,5 +241,23 @@
   "media_id": "18032220476870538",
   "permalink": "https://www.instagram.com/reel/DfvWk24CZbq/",
   "at": "2026-11-14T23:09:07.058Z"
+ },
+ "2026-11-15-story-2": {
+  "type": "story",
+  "status": "published",
+  "attempts": 1,
+  "container": "18133961599822298",
+  "media_id": "18127746925905605",
+  "permalink": "https://www.instagram.com/stories/tradereach_net/4030596986625854550",
+  "at": "2026-11-15T01:03:42.875Z"
+ },
+ "2026-11-15-carousel-1": {
+  "type": "carousel",
+  "status": "published",
+  "attempts": 1,
+  "container": "18133962166822298",
+  "media_id": "18112423799616585",
+  "permalink": "https://www.instagram.com/p/Dfvjv5zm1Iu/",
+  "at": "2026-11-15T01:03:42.875Z"
  }
 }
