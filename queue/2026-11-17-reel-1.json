@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-17-reel-1",
+ "type": "reel",
+ "pillar": "trade:roofing",
+ "publish_at": "2026-11-16T23:00:00.000Z",
+ "caption": "You're halfway across a tile roof, re-bedding ridge caps before the next storm rolls in. Phone's down in the ute.\nThat caller has water coming through their ceiling. If nobody gets back to them, they might ring the next roofer on the list.\nTradeReach texts every missed caller back within moments, asks single or double storey and for photos taken from the ground, and flags storm leaks to you straight away.\n👉 See how it works at tradereach.net\n#roofingaustralia #roofer #stormseason #australiantradies",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Roofers",
+   "text": "Ridge caps half done.\nClouds *rolling in.*"
+  },
+  {
+   "t": "calls",
+   "text": "Phone's down in the *ute.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 8 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "Their ceiling's *dripping.*",
+   "body": "Leave them waiting and they might go with whoever picks up first."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks single or double storey and for photos from the ground. Storm leaks get flagged straight away."
+  },
+  {
+   "t": "end",
+   "text": "Finish the ridge. *Call back ready.*"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-17-story-1",
+ "type": "story",
+ "pillar": "trade:painting",
+ "publish_at": "2026-11-16T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Painters",
+   "text": "Second coat on the *eaves.*\nPhone's on the drop sheet.",
+   "body": "Do you climb down for it or let it ring? Reply and tell us."
+  }
+ ]
+}

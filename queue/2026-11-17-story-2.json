@@ -1,0 +1,20 @@
+{
+ "id": "2026-11-17-story-2",
+ "type": "story",
+ "pillar": "trade:hvac",
+ "publish_at": "2026-11-17T00:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "On a roof *in November.*\nPhone's in the van.",
+   "body": "How many calls stack up by smoko? Reply with your guess."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Every missed caller gets a *text back.*",
+   "body": "It asks split, ducted or other, and the brand if they mention it. See it at tradereach.net"
+  }
+ ]
+}

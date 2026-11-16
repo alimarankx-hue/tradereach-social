@@ -1,0 +1,44 @@
+{
+ "id": "2026-11-17-reel-2",
+ "type": "reel",
+ "pillar": "trade:electrical",
+ "publish_at": "2026-11-17T07:00:00.000Z",
+ "caption": "You're on your knees pulling cable through a subfloor, torch in your teeth. The phone goes in your back pocket.\nIt might be someone with half the house dark, or sparks at a power point. Miss it and they can end up calling another sparky.\nTradeReach texts the caller back within moments, asks if it's the whole property or part of it, and alerts you straight away if it sounds like sparking, smoke or exposed wires.\n👉 Try the live demo at tradereach.net, no signup\n#electricianaustralia #sparky #australiantradies #tradiebusiness",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Sparkies",
+   "text": "Torch in your *teeth.*\nCable in both hands."
+  },
+  {
+   "t": "calls",
+   "text": "Back pocket's *buzzing.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "Half their house is *dark.*",
+   "body": "If nobody gets back to them, they can ring the next sparky they find."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "A *text back* within moments.",
+   "body": "It asks whole or part of the property. Sparking, smoke or exposed wires get an urgent alert."
+  },
+  {
+   "t": "body",
+   "text": "Crawl out to a *clear summary.*",
+   "body": "Name, suburb, the problem and a good time to call."
+  },
+  {
+   "t": "end",
+   "text": "Pull the cable. *Call back ready.*"
+  }
+ ]
+}

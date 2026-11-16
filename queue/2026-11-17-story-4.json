@@ -1,0 +1,20 @@
+{
+ "id": "2026-11-17-story-4",
+ "type": "story",
+ "pillar": "trade:plumbing",
+ "publish_at": "2026-11-17T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Plumbers",
+   "text": "Cutting into a *copper* line.\nCaller smells gas.",
+   "body": "Would you rather know before you put the cutter down? Reply yes or no."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Gas smells get an *urgent alert.*",
+   "body": "The caller gets fixed safety wording, never improvised. Try the demo at tradereach.net"
+  }
+ ]
+}

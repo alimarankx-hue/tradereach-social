@@ -1,0 +1,54 @@
+{
+ "id": "2026-11-17-carousel-1",
+ "type": "carousel",
+ "pillar": "tips",
+ "publish_at": "2026-11-17T01:00:00.000Z",
+ "caption": "Christmas shutdown's coming. The tools go down, but the phone keeps ringing: leaks, dead aircon, gates that won't shut.\nIf those calls go to voicemail for a fortnight, some of that work can end up with someone else.\nTradeReach texts each missed caller back within moments, says it's automated, asks what they need and keeps every job in your dashboard for when you're back.\n👉 See how it works at tradereach.net\nWhat's on your list before the break?\n#australiantradies #tradiebusiness #christmasshutdown #smallbusinessaustralia",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Before the break",
+   "text": "Your Christmas\n*shutdown* checklist",
+   "body": "Swipe. Save it for December."
+  },
+  {
+   "t": "rule",
+   "num": "01",
+   "ok": true,
+   "text": "Chase your *quotes.*",
+   "body": "Anything still sitting at Quoted, follow it up before people go away."
+  },
+  {
+   "t": "rule",
+   "num": "02",
+   "ok": true,
+   "text": "Tell regulars your *dates.*",
+   "body": "Last day on the tools, first day back. Keep it simple."
+  },
+  {
+   "t": "rule",
+   "num": "03",
+   "ok": false,
+   "text": "A full *voicemail box.*",
+   "body": "Callers hear the beep and might just try the next name."
+  },
+  {
+   "t": "rule",
+   "num": "04",
+   "ok": true,
+   "text": "Every missed call gets a *text.*",
+   "body": "It says it's automated, asks what they need and keeps each job in your dashboard."
+  },
+  {
+   "t": "rule",
+   "num": "05",
+   "ok": true,
+   "text": "You decide who to *call back.*",
+   "body": "Emergencies flagged straight away. Everything else waits for you, with the details."
+  },
+  {
+   "t": "end",
+   "text": "Enjoy the break. *Come back to the details.*"
+  }
+ ]
+}
