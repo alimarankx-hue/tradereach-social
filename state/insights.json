@@ -161,7 +161,7 @@
    }
   },
   "2026-11-14-reel-2": {
-   "at": "2026-11-15T06:58:23.152Z",
+   "at": "2026-11-16T04:09:29.673Z",
    "metrics": {
     "reach": 1,
     "views": 1,
@@ -251,6 +251,18 @@
   "2026-11-15-story-4": {
    "at": "2026-11-16T02:54:41.672Z",
    "metrics": {}
+  },
+  "2026-11-16-carousel-1": {
+   "at": "2026-11-16T04:09:29.673Z",
+   "metrics": {
+    "reach": 0,
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "saved": 0,
+    "shares": 0,
+    "total_interactions": 0
+   }
   }
  },
  "account": {
