@@ -81,7 +81,7 @@
    "metrics": {}
   },
   "2026-11-13-reel-1": {
-   "at": "2026-11-15T15:37:10.599Z",
+   "at": "2026-11-16T12:03:50.181Z",
    "metrics": {
     "reach": 4,
     "views": 4,
@@ -257,6 +257,18 @@
    "metrics": {
     "reach": 0,
     "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "saved": 0,
+    "shares": 0,
+    "total_interactions": 0
+   }
+  },
+  "2026-11-16-reel-2": {
+   "at": "2026-11-16T12:03:50.181Z",
+   "metrics": {
+    "reach": 2,
+    "views": 3,
     "likes": 0,
     "comments": 0,
     "saved": 0,
