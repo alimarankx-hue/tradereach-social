@@ -304,5 +304,23 @@
   "media_id": "18455160139122737",
   "permalink": "https://www.instagram.com/reel/Dfx7c82gqma/",
   "at": "2026-11-15T23:09:48.142Z"
+ },
+ "2026-11-16-story-2": {
+  "type": "story",
+  "status": "published",
+  "attempts": 1,
+  "container": "18134144755822298",
+  "media_id": "18393654613224838",
+  "permalink": "https://www.instagram.com/stories/tradereach_net/4031349440250219928",
+  "at": "2026-11-16T01:58:42.134Z"
+ },
+ "2026-11-16-carousel-1": {
+  "type": "carousel",
+  "status": "published",
+  "attempts": 1,
+  "container": "18134145046822298",
+  "media_id": "18102930500394774",
+  "permalink": "https://www.instagram.com/p/DfyO0OPF6sh/",
+  "at": "2026-11-16T01:58:42.134Z"
  }
 }
