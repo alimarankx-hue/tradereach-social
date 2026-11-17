@@ -122,7 +122,7 @@ const MW = 460, MH = 570, MX = 50, MY = 940; // bottom-left, above Instagram's c
 export function mascotFor(item, footage = null) {
   if (item.type !== 'reel' || item.mascot === 'none') return null;
   // Owner, 2026-11-17: the code-drawn mascots don't look good enough, so they only appear when a post asks for one.
-  return MASCOTS[item.mascot] || null;
+  return MASCOTS[item.mascot] ? item.mascot : null;
 }
 export const moodOf = (item) => item.mood || (item.scenes.some((s) => s.t === 'say') ? 'angry' : 'happy');
 async function mascotPng(dir, kind, mood, id, mouth = 0) {
