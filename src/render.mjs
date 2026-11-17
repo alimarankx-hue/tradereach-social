@@ -41,6 +41,8 @@ body.light{background:#fff;color:#0B1E3A}
 .end{position:absolute;inset:0;background:#0B1E3A;color:#fff;display:flex;flex-direction:column;justify-content:center;
   align-items:center;text-align:center;gap:48px;padding:var(--pad)}
 .end img{width:860px;mix-blend-mode:lighten}.end .gold{color:#FFC629}
+.hook{justify-content:flex-start;padding-top:330px}.hook .h{font-size:150px}.hook .h.m{font-size:120px}
+.over{background:transparent}.over .h,.over .p,.over .k{text-shadow:0 4px 28px rgba(0,0,0,.65)}.over .p{color:#eef2fb}.over .k{color:#d7deea}
 .pill{background:#FFC629;color:#3b2a00;font-weight:700;font-size:46px;border-radius:999px;padding:26px 56px}
 .small{font-size:32px;color:#94A3B8}
 `;
@@ -75,17 +77,18 @@ const SCENES = {
 };
 export const SCENE_TYPES = Object.keys(SCENES);
 
-async function shot(dir, name, scene, item) {
+async function shot(dir, name, scene, item, { hook = false, over = false } = {}) {
   const f = FMT[item.type];
   const html = join(dir, `${name}.html`), png = join(dir, `${name}.png`);
   const tag = item.type === 'carousel' ? '' : `<div class="tag"><img src="${ROOT}/brand/icon_gold.png"></div>`;
   writeFileSync(html, `<!doctype html><meta charset="utf-8"><style>${CSS}</style>
-<body class="${item.type === 'carousel' ? 'light' : ''}" style="--w:${f.w}px;--h:${f.h}px;${f.vars}">${tag}${SCENES[scene.t](scene)}</body>`);
+<body class="${[item.type === 'carousel' && 'light', hook && 'hook', over && 'over'].filter(Boolean).join(' ')}" style="--w:${f.w}px;--h:${f.h}px;${f.vars}">${tag}${SCENES[scene.t](scene)}</body>`);
   rmSync(png, { force: true });
   // Headless Chrome writes the screenshot but doesn't always exit, so wait for the file and then kill it.
   const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files',
     '--no-first-run', '--no-sandbox', `--user-data-dir=${PROFILE}`, '--force-device-scale-factor=1',
-    `--window-size=${f.w},${f.h}`, '--virtual-time-budget=3000', `--screenshot=${png}`, `file://${html}`], { stdio: 'ignore' });
+    `--window-size=${f.w},${f.h}`, '--virtual-time-budget=3000', ...(over ? ['--default-background-color=00000000'] : []),
+    `--screenshot=${png}`, `file://${html}`], { stdio: 'ignore' });
   for (let t = 0; t < 300 && !(existsSync(png) && statSync(png).size > 0); t++) await sleep(100);
   await sleep(300);
   chrome.kill('SIGKILL');
@@ -100,25 +103,96 @@ const ff = (args) => execFileSync(FFMPEG, ['-v', 'error', '-y', ...args], { stdi
 const MUSIC = existsSync(join(ROOT, 'assets/music')) ? readdirSync(join(ROOT, 'assets/music')).filter((f) => f.endsWith('.m4a')).sort() : [];
 const trackFor = (id) => MUSIC.length ? join(ROOT, 'assets/music', MUSIC[[...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % MUSIC.length]) : null;
 
-function video(pngs, secs, out, music) {
-  const fps = 30, fade = 0.35, frames = Math.round(secs * fps);
-  const inputs = pngs.flatMap((p) => ['-loop', '1', '-t', String(secs), '-i', p]);
-  const parts = pngs.map((_, i) =>
-    `[${i}]scale=2160:3840,zoompan=z='min(zoom+0.0007,1.05)':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=${frames}:s=1080x1920:fps=${fps},format=yuv420p[v${i}]`);
-  let last = 'v0';
-  const chain = [];
-  for (let i = 1; i < pngs.length; i++) {
-    chain.push(`[${last}][v${i}]xfade=transition=fade:duration=${fade}:offset=${((secs - fade) * i).toFixed(2)}[x${i}]`);
-    last = `x${i}`;
+const FADE = 0.35;
+const TRANSITIONS = ['slideup', 'smoothleft', 'fade'];
+// The first 0.5 s decides whether people keep watching, so the hook scene punches in fast, then drifts slowly.
+const PUNCH = "if(lte(on,15),1.14-0.00933*on,1+0.0006*(on-15))";
+
+function video(pngs, secs, out, music, footage = null) {
+  const fps = 30, frames = Math.round(secs * fps), n = pngs.length;
+  const total = Math.max(3.2, secs * n - FADE * (n - 1)); // Meta minimum is 3 s
+  const start = (i) => i * (secs - FADE);
+  let inputs, graph, last;
+  if (footage) { // real footage, darkened for contrast, with each transparent scene faded in on top
+    inputs = [...pngs.flatMap((p) => ['-loop', '1', '-t', total.toFixed(2), '-i', p]), '-stream_loop', '-1', '-i', footage];
+    graph = [`[${n}:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=${fps},trim=0:${total.toFixed(2)},setpts=PTS-STARTPTS,eq=saturation=0.9,drawbox=c=black@0.5:t=fill,format=yuv420p[bg]`];
+    last = 'bg';
+    pngs.forEach((_, i) => {
+      const fx = [i > 0 && `fade=t=in:st=${start(i).toFixed(2)}:d=${FADE}:alpha=1`,
+        i < n - 1 && `fade=t=out:st=${(start(i) + secs - FADE).toFixed(2)}:d=${FADE}:alpha=1`].filter(Boolean);
+      graph.push(`[${i}]format=rgba${fx.length ? ',' + fx.join(',') : ''}[o${i}]`, `[${last}][o${i}]overlay=0:0:format=auto[b${i}]`);
+      last = `b${i}`;
+    });
+  } else {
+    inputs = pngs.flatMap((p) => ['-loop', '1', '-t', String(secs), '-i', p]);
+    graph = pngs.map((_, i) =>
+      `[${i}]scale=2160:3840,zoompan=z='${i === 0 ? PUNCH : 'min(zoom+0.0007,1.05)'}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=${frames}:s=1080x1920:fps=${fps},format=yuv420p[v${i}]`);
+    last = 'v0';
+    for (let i = 1; i < n; i++) {
+      graph.push(`[${last}][v${i}]xfade=transition=${TRANSITIONS[(i - 1) % TRANSITIONS.length]}:duration=${FADE}:offset=${start(i).toFixed(2)}[x${i}]`);
+      last = `x${i}`;
+    }
   }
-  const total = Math.max(3.2, secs * pngs.length - fade * (pngs.length - 1)); // Meta minimum is 3 s
+  const a = n + (footage ? 1 : 0); // audio input index
   const audioIn = music ? ['-stream_loop', '-1', '-i', music] : ['-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=48000:cl=stereo'];
-  const audio = `[${pngs.length}:a]atrim=0:${total},afade=t=in:d=0.4,afade=t=out:st=${Math.max(0, total - 1.2).toFixed(2)}:d=1.2,volume=0.85[aud]`;
+  graph.push(`[${a}:a]atrim=0:${total},afade=t=in:d=0.3,afade=t=out:st=${Math.max(0, total - 1).toFixed(2)}:d=1,volume=0.85[aud]`);
   ff([...inputs, ...audioIn,
-    '-filter_complex', [...parts, ...chain, audio].join(';'), '-map', `[${last}]`, '-map', '[aud]',
+    '-filter_complex', graph.join(';'), '-map', `[${last}]`, '-map', '[aud]',
     '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-r', String(fps), '-g', '60', '-crf', '20',
     '-maxrate', '8M', '-bufsize', '16M', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000',
     '-movflags', '+faststart', '-t', String(total), out]);
+}
+
+// Short Reels get watched to the end (and replayed), which is what Instagram rewards: about 8 s at most.
+export const REEL_MAX_SECS = 8;
+export function sceneSecs(item) {
+  const n = item.scenes.length, want = item.secs || 2.6;
+  return item.type === 'reel' ? Math.max(1.4, Math.min(want, (REEL_MAX_SECS + FADE * (n - 1)) / n)) : want;
+}
+
+// Background footage for a Reel, best first: the owner's own clips (assets/footage/<trade>/ or assets/footage/),
+// then free Pexels stock when PEXELS_API_KEY is set. None found: the plain brand background is used.
+const TRADE_QUERIES = { plumb: 'plumber working', electric: 'electrician working', sparky: 'electrician working', roof: 'roofer working',
+  hvac: 'air conditioner technician', aircon: 'air conditioner technician', 'air con': 'air conditioner technician', landscap: 'landscaping gardener', garden: 'landscaping gardener',
+  build: 'carpenter construction', carpent: 'carpenter construction', deck: 'carpenter construction', pest: 'pest control technician',
+  paint: 'house painter', clean: 'cleaner working' };
+const hashOf = (id) => [...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+// The trade comes from the pillar ("trade:plumber"), then the first scene's kicker, then hashtags: never free caption
+// text, where words like "repair" or "clean" would pick the wrong footage.
+export function tradeOf(item) {
+  const tags = ((item.caption || '').match(/#\w+/g) || []).join(' ');
+  for (const text of [item.pillar, item.scenes?.[0]?.kicker, tags]) {
+    const t = String(text || '').toLowerCase();
+    const key = t && Object.keys(TRADE_QUERIES).find((k) => t.includes(k));
+    if (key) return key;
+  }
+  return null;
+}
+const clips = (dir) => existsSync(dir) ? readdirSync(dir).filter((f) => /\.(mp4|mov)$/i.test(f)).sort().map((f) => join(dir, f)) : [];
+
+export async function footageFor(item, { env = process.env, fetchImpl = fetch } = {}) {
+  if (item.type !== 'reel' || env.FOOTAGE === '0') return null;
+  const trade = tradeOf(item);
+  const own = [...(trade ? clips(join(ROOT, 'assets/footage', trade)) : []), ...clips(join(ROOT, 'assets/footage'))];
+  if (own.length) return own[hashOf(item.id) % own.length];
+  if (!env.PEXELS_API_KEY) return null;
+  try {
+    const q = encodeURIComponent(TRADE_QUERIES[trade] || 'tradesman working');
+    const res = await fetchImpl(`https://api.pexels.com/videos/search?query=${q}&orientation=portrait&per_page=20`,
+      { headers: { Authorization: env.PEXELS_API_KEY }, signal: AbortSignal.timeout(20000) });
+    const videos = (await res.json()).videos || [];
+    const files = videos.map((v) => (v.video_files || []).filter((f) => f.height >= 1280 && f.width < f.height && f.file_type === 'video/mp4')
+      .sort((a, b) => a.height - b.height)[0]).filter(Boolean);
+    if (!files.length) return null;
+    const pick = files[hashOf(item.id) % files.length];
+    const dir = join(ROOT, 'out/footage-cache'), file = join(dir, `${pick.id}.mp4`);
+    if (!existsSync(file)) {
+      mkdirSync(dir, { recursive: true });
+      const v = await fetchImpl(pick.link, { signal: AbortSignal.timeout(60000) });
+      writeFileSync(file, Buffer.from(await v.arrayBuffer()));
+    }
+    return file;
+  } catch { return null; } // stock footage is a nice-to-have: never block a post over it
 }
 
 // Returns the list of output files, in posting order.
@@ -128,12 +202,14 @@ export async function renderItem(item, outRoot = join(ROOT, 'out')) {
   const dir = join(resolve(outRoot), item.id), frames = join(dir, 'frames');
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
+  const footage = await footageFor(item);
   const pngs = [];
-  for (const [i, s] of item.scenes.entries()) pngs.push(await shot(frames, `${i + 1}`, s, item));
+  for (const [i, s] of item.scenes.entries())
+    pngs.push(await shot(frames, `${i + 1}`, s, item, { hook: item.type === 'reel' && i === 0, over: Boolean(footage) && s.t !== 'end' }));
   let files;
   if (isVideo(item)) {
     files = [join(dir, `${item.id}.mp4`)];
-    video(pngs, item.secs || 2.6, files[0], item.music === false ? null : trackFor(item.id));
+    video(pngs, sceneSecs(item), files[0], item.music === false ? null : trackFor(item.id), footage);
   } else {
     files = pngs.map((p, i) => join(dir, `${item.id}-${i + 1}.jpg`));
     pngs.forEach((p, i) => ff(['-i', p, '-q:v', '2', files[i]]));

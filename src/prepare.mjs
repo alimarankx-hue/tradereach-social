@@ -11,8 +11,9 @@ import { renderItem, isVideo, SCENE_TYPES } from './render.mjs';
 import { sydneyDay, loadQueue } from './publish.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
-// Sydney posting slots. Feed times follow Metricool's best-time data (10 am peak, 5–6 pm second peak).
-const SLOTS = { reel: ['10:00', '18:00'], carousel: ['12:00'], story: ['08:00', '11:30', '15:00', '19:30'] };
+// Sydney posting slots. Reels go out when tradies check their phones: before work, lunch, after work.
+// No carousels: with few followers they reach almost nobody (0 views each, Nov 2026), while Reels reach non-followers.
+const SLOTS = { reel: ['07:00', '12:00', '18:00'], carousel: [], story: ['08:00', '11:30', '15:00', '19:30'] };
 
 // 'YYYY-MM-DD', 'HH:MM' in Sydney -> UTC ISO string (handles daylight saving).
 export function sydneyToUtc(day, hm) {

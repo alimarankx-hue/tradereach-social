@@ -4,7 +4,7 @@ Kept separate from every other project: it shares no servers, keys or code with 
 
 Every 30 minutes, GitHub Actions:
 1. **Takes tomorrow's drafts.** A daily Claude scheduled task (1:30 pm Sydney) follows `content/WRITER.md` and `content/facts.md`. It pushes `inbox/<day>.json` to a `claude/inbox-<day>` branch. Actions copies only that file, then deletes the branch. Each draft must pass the claim guard (`src/guard.mjs`), a repeat check and a test render, or it's dropped.
-2. **Publishes due posts** through Meta's Graph API (`src/publish.mjs`). Daily caps: 2 Reels, 1 carousel and 5 Stories. Retries never create duplicates.
+2. **Publishes due posts** through Meta's Graph API (`src/publish.mjs`). Daily caps: 3 Reels, 0 carousels (paused) and 5 Stories. Retries never create duplicates.
 3. **Collects insights** into `state/insights.json`. Tomorrow's plan leans towards what performed best.
 
 ## Emergency stop (any one of these works)

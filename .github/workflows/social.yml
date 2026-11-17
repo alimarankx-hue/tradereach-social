@@ -28,6 +28,7 @@ jobs:
       MEDIA_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}
       CHROME_PATH: /usr/bin/google-chrome
       FFMPEG_PATH: /usr/bin/ffmpeg
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }} # optional: real tradie footage behind Reels (pexels.com/api)
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5

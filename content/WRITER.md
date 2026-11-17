@@ -46,11 +46,18 @@ Use it for topic ideas only. Don't quote figures from it.
 
 ## Output: `inbox/<YYYY-MM-DD>.json` (the date is TOMORROW in Sydney)
 ```json
-{"day": "2026-11-12", "items": [ ...exactly 2 "reel", 1 "carousel", 4 "story"... ]}
+{"day": "2026-11-12", "items": [ ...exactly 3 "reel" and 4 "story" (no carousels for now)... ]}
 ```
 Item: `{"type": "reel"|"carousel"|"story", "pillar": "problem"|"how-it-works"|"trade:<name>"|"tips"|"trust", "caption": "...", "scenes": [...]}`
 - **caption** (reels and carousels only; stories have none): 3–6 short lines following problem → consequence → solution → CTA, then 3–5 relevant hashtags on the last line. Max 5 hashtags.
-- **Reel:** 4–6 scenes, 2.6 s each, ending with an "end" scene. **Carousel:** 5–8 slides, the first a "title" hook, the last an "end" scene; the middle slides should be genuinely useful (a checklist, a before/after, a "which one's you"). **Story:** 1 scene (still image) or 2 scenes (short video). Ask a question, since replies arrive as DMs.
+- **Reel:** 3–5 scenes ending with an "end" scene. The whole Reel runs about 8 seconds, so every scene is one short line.
+  **The first scene is everything:** people decide in under a second whether to keep watching (Nov 2026 Reels averaged ~1 s of watch time and stalled at 0–50 views).
+  - Make it a `title` with a `text` of at most 6 words, shown huge at the top: a specific moment in their day or a question they'd answer "yep" to ("Phone rings. You're on a roof.", "Who's ringing you right now?").
+  - Name the trade or the moment straight away. Never open with the brand, a greeting, a logo line or a slow setup.
+  - Use the `kicker` for the trade ("SPARKIES", "CHIPPIES") so the right people stop.
+  - Scenes 2–3 deliver the twist or payoff fast; don't spend three scenes setting the scene.
+  - Add `"pillar": "trade:<name>"` (plumber, electrician, roofer, hvac, landscaper, builder, pest, painter, cleaner) so real footage of that trade is used behind the text.
+- **Carousel:** paused (they reached almost nobody). Don't write any. **Story:** 1 scene (still image) or 2 scenes (short video). Ask a question, since replies arrive as DMs.
 
 Scenes. Use `*word*` to highlight one or two key words and `\n` for a line break. Keep each `text` under 60 characters and `body` under 120.
 - `{"t":"title","kicker"?:"...","text":"...","body"?:"..."}`

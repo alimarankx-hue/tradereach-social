@@ -7,7 +7,7 @@ import { join, resolve, relative } from 'node:path';
 import { check } from './guard.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
-export const CAPS = { reel: 2, carousel: 1, story: 5 }; // per Sydney calendar day
+export const CAPS = { reel: 3, carousel: 0, story: 5 }; // per Sydney calendar day; carousels paused (see prepare.mjs)
 const STALE_HOURS = 6; // a due item older than this is skipped, so an outage never dumps a backlog
 const MAX_ATTEMPTS = 3;
 

@@ -64,8 +64,8 @@ test('publishes due items once; a re-run does nothing', async () => {
   const queue = samples.filter((s) => s.type !== 'story').map((s) => due(s, '2026-11-20T00:30:00Z'));
   const args = { g, ig: 'ig', queue, ledger, save() {}, render: async () => ['a.mp4'], mediaUrl: (f) => f, now: NOW, log() {} };
   const r1 = await run(args);
-  assert.equal(r1.published.length, 3); // 2 reels (daily cap) + 1 carousel
-  assert.equal(r1.skipped.length, 1); // third reel waits: cap
+  assert.equal(r1.published.length, 3); // 3 reels (daily cap)
+  assert.equal(r1.skipped.length, 1); // carousel waits: carousels are paused (cap 0)
   const publishes = g.calls.filter((c) => c.includes('media_publish')).length;
   await run(args);
   assert.equal(g.calls.filter((c) => c.includes('media_publish')).length, publishes);
@@ -120,12 +120,42 @@ test('prepare keeps good items, drops bad and repeated ones, caps per type', asy
     { ...reel, caption: 'Trusted by hundreds of sparkies' }, // claim: dropped
     { ...samples.find((s) => s.id.includes('reel-01')) }, // repeat of past hook: dropped
     { ...samples.find((s) => s.id.includes('reel-03')) },
-    { ...samples.find((s) => s.id.includes('reel-03')), scenes: [{ t: 'title', text: 'A third reel about ladders' }, { t: 'title', text: 'x' }, { t: 'title', text: 'y' }] }, // over cap
+    { ...samples.find((s) => s.id.includes('reel-03')), scenes: [{ t: 'title', text: 'A third reel about ladders' }, { t: 'title', text: 'x' }, { t: 'title', text: 'y' }] },
+    { ...samples.find((s) => s.id.includes('reel-03')), scenes: [{ t: 'title', text: 'A fourth reel about utes' }, { t: 'title', text: 'z' }] }, // over cap
+    { ...samples.find((s) => s.type === 'carousel') }, // carousels paused: dropped
     { type: 'story', scenes: [{ t: 'body', text: 'Ever answered a call *mid-climb?*' }] },
   ];
   const kept = await prepare({ day: '2026-11-21', items, pastHooks: ["You're under a *house.*"], render: async () => ['x'], log() {} });
-  assert.deepEqual(kept.map((k) => k.id), ['2026-11-21-reel-1', '2026-11-21-reel-2', '2026-11-21-story-1']);
+  assert.deepEqual(kept.map((k) => k.id), ['2026-11-21-reel-1', '2026-11-21-reel-2', '2026-11-21-reel-3', '2026-11-21-story-1']);
   assert.equal(kept[0].scenes.at(-1).t, 'end');
-  assert.equal(kept[2].caption, undefined);
-  assert.equal(kept[0].publish_at, '2026-11-20T23:00:00.000Z');
+  assert.equal(kept[3].caption, undefined);
+  assert.equal(kept[0].publish_at, '2026-11-20T20:00:00.000Z'); // 7 am Sydney (AEDT)
+});
+
+import { sceneSecs, REEL_MAX_SECS, tradeOf, footageFor } from '../src/render.mjs';
+
+test('reels stay short: about 8 s whatever the scene count; stories keep their timing', () => {
+  for (const n of [3, 4, 6]) {
+    const item = { type: 'reel', secs: 2.6, scenes: Array(n).fill({ t: 'title', text: 'x' }) };
+    const total = sceneSecs(item) * n - 0.35 * (n - 1);
+    assert.ok(total <= REEL_MAX_SECS + 0.01 && total >= 3.2, `${n} scenes -> ${total}s`);
+  }
+  assert.equal(sceneSecs({ type: 'story', secs: 2.6, scenes: [{}, {}] }), 2.6);
+});
+
+test('footage trade comes from pillar, kicker or hashtags, never loose caption words', () => {
+  assert.equal(tradeOf({ pillar: 'trade:electrician', caption: 'repair a pipe' }), 'electric');
+  assert.equal(tradeOf({ pillar: 'problem', scenes: [{ kicker: 'ROOFERS' }], caption: '' }), 'roof');
+  assert.equal(tradeOf({ pillar: 'problem', caption: 'Repair calls while you clean up.\n#plumbersofaustralia' }), 'plumb');
+  assert.equal(tradeOf({ pillar: 'problem', caption: 'Repair calls while you clean up.' }), null);
+});
+
+test('footage: none without a key or clips; a Pexels failure never blocks a post', async () => {
+  const item = { id: 'x-reel-1', type: 'reel', pillar: 'trade:plumber', scenes: [] };
+  assert.equal(await footageFor(item, { env: {} }), null);
+  assert.equal(await footageFor({ ...item, type: 'story' }, { env: { PEXELS_API_KEY: 'k' } }), null);
+  const broken = async () => { throw new Error('network down'); };
+  assert.equal(await footageFor(item, { env: { PEXELS_API_KEY: 'k' }, fetchImpl: broken }), null);
+  const empty = async () => ({ json: async () => ({ videos: [] }) });
+  assert.equal(await footageFor(item, { env: { PEXELS_API_KEY: 'k' }, fetchImpl: empty }), null);
 });
