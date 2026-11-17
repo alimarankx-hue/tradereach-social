@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-18-story-2",
+ "type": "story",
+ "pillar": "trade:electrical",
+ "publish_at": "2026-11-18T00:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Sparkies",
+   "text": "Caller says the outlet's\n*sparking.*",
+   "body": "TradeReach flags it to you straight away. How do you handle urgent calls now? Reply."
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "id": "2026-11-18-reel-2",
+ "type": "reel",
+ "pillar": "trade:carpentry",
+ "publish_at": "2026-11-18T07:00:00.000Z",
+ "caption": "Mitre saw going, ear plugs in, half a deck of offcuts at your feet. The phone rings out on the bench.\nThat might have been the next deck job. Callers who hear nothing back can move on to the next carpenter.\nTradeReach texts each missed caller within moments, asks the deck size, an email and photos, and puts the job summary on your phone.\n👉 Try the live demo at tradereach.net, no signup\n#carpentry #deckbuilder #carpenterlife #australiantradies",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Carpenters",
+   "text": "Mitre saw *screaming.*\nBench phone ringing out."
+  },
+  {
+   "t": "calls",
+   "text": "Ear plugs in. *Missed it.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "That was a *deck* enquiry.",
+   "body": "Hear nothing back and they can try the next carpenter on the list."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "They get a *text back* in moments.",
+   "body": "It asks deck size, an email and photos. You get one clear job summary."
+  },
+  {
+   "t": "body",
+   "text": "You quote. *You* book.",
+   "body": "It collects the details. The pricing and the calendar stay with you."
+  },
+  {
+   "t": "end",
+   "text": "Make the cut. *Then call back.*"
+  }
+ ]
+}

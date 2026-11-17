@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-18-story-4",
+ "type": "story",
+ "pillar": "trade:handyman",
+ "publish_at": "2026-11-18T08:30:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Handymen",
+   "text": "Leaky tap, sticky door,\nwobbly *fence.*",
+   "body": "What's the odd job you get asked about most? Reply and tell us."
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "2026-11-18-story-1",
+ "type": "story",
+ "pillar": "trade:air-conditioning",
+ "publish_at": "2026-11-17T21:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Aircon techs",
+   "text": "Third service today.\nPhone's *full* of missed calls.",
+   "body": "Do you ring back between jobs or at knock-off? Reply and tell us."
+  }
+ ]
+}

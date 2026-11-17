@@ -1,0 +1,18 @@
+{
+ "id": "2026-11-18-story-3",
+ "type": "story",
+ "pillar": "how-it-works",
+ "publish_at": "2026-11-18T04:00:00.000Z",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Plumbers",
+   "text": "Wrist-deep in a *P-trap.*\nSomeone else is ringing.",
+   "body": "They get a text back, you get the details. What do you do now? Reply."
+  },
+  {
+   "t": "sms",
+   "text": "The caller gets this *in moments.*"
+  }
+ ]
+}

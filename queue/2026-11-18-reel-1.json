@@ -1,0 +1,43 @@
+{
+ "id": "2026-11-18-reel-1",
+ "type": "reel",
+ "pillar": "trade:landscaping",
+ "publish_at": "2026-11-17T23:00:00.000Z",
+ "caption": "You're up on the trestle with the hedge trimmer, phone buzzing away in your back pocket where you'll never feel it.\nThat caller wants a backyard sorted before Christmas. If nobody gets back to them, they might book whoever answers next.\nTradeReach texts every missed caller back within moments, asks the rough area, an email and photos, and sends you one clear job summary.\n👉 See how it works at tradereach.net\n#landscapingaustralia #landscaper #gardenmaintenance #australiantradies",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Landscapers",
+   "text": "Hedge trimmer up high.\nPhone in your *back pocket.*"
+  },
+  {
+   "t": "calls",
+   "text": "You didn't feel a *thing.*",
+   "calls": [
+    [
+     "Missed call",
+     "Mobile · just now"
+    ],
+    [
+     "Missed call",
+     "Mobile · 12 min ago"
+    ]
+   ]
+  },
+  {
+   "t": "body",
+   "text": "They want it done *before Christmas.*",
+   "body": "Leave them hanging and they might go with whoever picks up first."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Each caller gets a *text back.*",
+   "body": "It asks the rough area, an email and photos, then sends you one clear job summary."
+  },
+  {
+   "t": "end",
+   "text": "Finish the hedge. *Call back ready.*"
+  }
+ ]
+}

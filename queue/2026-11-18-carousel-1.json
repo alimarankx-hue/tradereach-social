@@ -1,0 +1,49 @@
+{
+ "id": "2026-11-18-carousel-1",
+ "type": "carousel",
+ "pillar": "problem",
+ "publish_at": "2026-11-18T01:00:00.000Z",
+ "caption": "Every trade has that one moment the phone always picks to ring.\nMiss it and the caller can end up with whoever answered first.\nTradeReach texts every missed caller back within moments, asks what they need and sends you a clear job summary, so you call back ready.\n👉 See how it works at tradereach.net\nWhich one's you? Tell us in the comments.\n#australiantradies #tradiebusiness #smallbusinessaustralia #tradielife",
+ "scenes": [
+  {
+   "t": "title",
+   "kicker": "Which one's you?",
+   "text": "The phone always rings\nat the *worst* moment",
+   "body": "Swipe and tag a mate who's been there."
+  },
+  {
+   "t": "body",
+   "kicker": "Sparkies",
+   "text": "Meter box open.\n*Live* side exposed.",
+   "body": "Nobody's reaching for a phone there. Nor should they."
+  },
+  {
+   "t": "body",
+   "kicker": "Cleaners",
+   "text": "Rubber gloves.\nShower screen *half done.*",
+   "body": "Wet hands, slippery phone, caller gives up after five rings."
+  },
+  {
+   "t": "body",
+   "kicker": "Aircon techs",
+   "text": "Head in the *ceiling.*\nDucting in both hands.",
+   "body": "Phone's on the ladder below. It rings. Then it stops."
+  },
+  {
+   "t": "body",
+   "kicker": "Handymen",
+   "text": "Gate hinge in one hand.\nDrill in the *other.*",
+   "body": "By the time it's hung, the caller might be ringing someone else."
+  },
+  {
+   "t": "body",
+   "kicker": "TradeReach",
+   "text": "Whichever one's you,\nthey get a *text back.*",
+   "body": "It asks what they need and sends you one job summary. Emergencies get flagged straight away."
+  },
+  {
+   "t": "end",
+   "text": "Finish the job. *Call back ready.*"
+  }
+ ]
+}
