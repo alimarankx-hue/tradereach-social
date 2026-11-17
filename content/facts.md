@@ -42,9 +42,17 @@ Edit this file to change what posts may say. Anything not here must not be state
 - Live demo at tradereach.net: no signup, runs in the browser, no real calls or texts, nothing typed is saved. Fictional business "Smith Plumbing".
 - Missed-call calculator: missed calls per week × 52 ÷ 12 × average job value × conversion rate. Results are hypothetical, not a prediction or guarantee. The site's starting values are placeholders, not industry averages: never quote them as typical.
 
+## Offer (live on tradereach.net since 17 Nov 2026)
+- Sign-up is open: create an account in a couple of minutes at tradereach.net.
+- 30-day money-back guarantee, use this wording: "If TradeReach doesn't capture a single job enquiry from a missed call in your first 30 days, we refund your first month." Conditions apply (call forwarding switched on, ask within 7 days after day 30, once per business): point to tradereach.net, never shorten it to "no questions asked".
+- Setup done with you: we help switch on call forwarding with your carrier.
+- Founding price lock: join before 31 January 2027 and your plan's monthly price won't go up for 12 months. (Never state the price itself.)
+- Cancel anytime, no lock-in contract, no cancellation fee.
+- Good closing CTA: "Try the demo free at tradereach.net. Money back if it doesn't catch a single enquiry in 30 days."
+
 ## Never say
 - Customer numbers, testimonials, reviews, results, revenue recovered, percentages or industry statistics.
-- Prices, discounts, free trials, contract terms.
+- Prices, discounts or free trials. (The offer section above is the only allowed wording about the guarantee, price lock and cancelling.)
 - "AI" capability claims (the product is rule-based).
-- That it books jobs, quotes, answers calls by voice, or guarantees anything.
+- That it books jobs, quotes, answers calls by voice, or guarantees anything other than the 30-day money-back guarantee above.
 - Anything about other businesses or people by name.
