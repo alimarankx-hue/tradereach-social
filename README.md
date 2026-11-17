@@ -31,5 +31,6 @@ Details are in the Actions log and `state/ledger.json`.
 ## Limits
 - Topic research uses web search for timely ideas only; figures are never quoted.
 - The guard catches common bad claims, but it can't prove a sentence is true. Keep `content/facts.md` accurate.
-- Reels and Story videos carry our own synthesized music (`assets/music/`, made by `src/music.mjs`), because Instagram's API can't add tracks from its music library. There's no voiceover.
+- Reels and Story videos carry our own synthesized music (`assets/music/`, made by `src/music.mjs`), because Instagram's API can't add tracks from its music library.
+- Talking sketches (`talk` scenes) are voiced by Azure Speech's Australian voices (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION` secrets; free tier). Without the key the mascots still talk on screen, silently. Masked swear words are bleeped (`src/talk.mjs`).
 - Website visits and leads are tracked only as profile link taps. TradeReach production is deliberately not touched.

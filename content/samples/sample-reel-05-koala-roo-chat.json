@@ -1,0 +1,15 @@
+{
+ "id": "sample-reel-05-koala-roo-chat",
+ "type": "reel",
+ "pillar": "trade:electrician",
+ "scenes": [
+  {"t": "title", "kicker": "SPARKIES", "text": "Missed one call.\nLost the *job.*"},
+  {"t": "talk", "who": "koala", "mood": "angry", "text": "Missed one call and the job's *gone.*"},
+  {"t": "talk", "who": "roo", "text": "Ya muppet. Why didn't it text 'em back?"},
+  {"t": "talk", "who": "koala", "mood": "angry", "text": "Text 'em back? What are ya on about?"},
+  {"t": "talk", "who": "roo", "text": "TradeReach, mate. Texts 'em while you're on the tools."},
+  {"t": "talk", "who": "koala", "mood": "angry", "text": "Well *sh#t.* Fair dinkum."},
+  {"t": "end", "text": "Missed the call? It still gets *answered.*"}
+ ],
+ "caption": "Up a ladder, phone buzzing, can't answer. By smoko they've rung someone else. 😤\nThe caller didn't wait around.\nTradeReach texts missed callers back straight away and sends you the job details, so you can ring back when you're off the tools.\n👉 Try the live demo at tradereach.net, no signup\n#sparky #electricianaustralia #tradielife #australiantradies"
+}

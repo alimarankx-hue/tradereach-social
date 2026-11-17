@@ -64,8 +64,9 @@ test('publishes due items once; a re-run does nothing', async () => {
   const queue = samples.filter((s) => s.type !== 'story').map((s) => due(s, '2026-11-20T00:30:00Z'));
   const args = { g, ig: 'ig', queue, ledger, save() {}, render: async () => ['a.mp4'], mediaUrl: (f) => f, now: NOW, log() {} };
   const r1 = await run(args);
+  const reels = queue.filter((q) => q.type === 'reel').length, carousels = queue.filter((q) => q.type === 'carousel').length;
   assert.equal(r1.published.length, 3); // 3 reels (daily cap)
-  assert.equal(r1.skipped.length, 2); // 4th reel waits (cap 3) and the carousel waits (carousels paused, cap 0)
+  assert.equal(r1.skipped.length, reels - 3 + carousels); // extra reels wait for the cap; carousels are paused (cap 0)
   const publishes = g.calls.filter((c) => c.includes('media_publish')).length;
   await run(args);
   assert.equal(g.calls.filter((c) => c.includes('media_publish')).length, publishes);
@@ -183,4 +184,28 @@ test('mascot: chosen per reel, never on stories, off with footage unless asked; 
   assert.equal(mascotFor({ ...reel, mascot: 'roo' }, '/clip.mp4'), 'roo');
   assert.equal(moodOf({ scenes: [{ t: 'say' }] }), 'angry');
   assert.equal(moodOf({ scenes: [{ t: 'title' }] }), 'happy');
+});
+
+import { speechParts, isMasked, shapes, engineFor } from '../src/talk.mjs';
+import { isDialogue } from '../src/render.mjs';
+
+test('talk: masked swear words are bleeped, normal punctuation is not', () => {
+  assert.deepEqual(speechParts("Oh you're *f#@!ing* joking. Flamin' hell!"),
+    [{ text: "Oh you're " }, { bleep: true }, { text: " joking. Flamin' hell!" }]);
+  for (const w of ['f#@!ing', 'sh#t', 'c*nt', 'f***', 'c#@t.']) assert.ok(isMasked(w), w);
+  for (const w of ['hell!', 'wow!!', 'mate,', "'em", 'ya']) assert.ok(!isMasked(w), w);
+});
+
+test('talk: mouth follows loudness, no single-frame flicker; voice engine picked from the env', () => {
+  assert.deepEqual(shapes([0, 0, 500, 900, 1000, 300, 0, 0, 800, 0]), [0, 0, 2, 2, 2, 2, 0, 0, 0, 0]);
+  assert.deepEqual(shapes([0, 0, 0]), [0, 0, 0]);
+  assert.equal(engineFor({ AZURE_SPEECH_KEY: 'k' }), 'azure');
+  assert.equal(engineFor({ TALK_ENGINE: 'none' }), process.platform === 'darwin' ? 'none' : 'none');
+});
+
+test('dialogue sample passes the guard and is detected as a talking sketch', () => {
+  const chat = samples.find((s) => s.id.includes('koala-roo-chat'));
+  assert.deepEqual(check(chat), []);
+  assert.ok(isDialogue(chat));
+  assert.ok(!isDialogue(samples.find((s) => s.id.includes('reel-01'))));
 });

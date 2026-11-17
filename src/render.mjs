@@ -5,6 +5,7 @@ import { mkdirSync, writeFileSync, rmSync, existsSync, statSync, readFileSync, r
 import { join, resolve, basename } from 'node:path';
 import { tmpdir } from 'node:os';
 import { setTimeout as sleep } from 'node:timers/promises';
+import { voiceLine, mouthFrames } from './talk.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const FFMPEG = process.env.FFMPEG_PATH || join(ROOT, 'bin/ffmpeg');
@@ -45,7 +46,8 @@ body.light{background:#fff;color:#0B1E3A}
 .top{justify-content:flex-start;padding-top:300px}.hook.mk .h{font-size:112px}
 .say{position:relative;align-self:flex-start;max-width:96%;background:#fff;color:#0B1E3A;border-radius:56px;padding:46px 54px;
   font-weight:800;font-stretch:108%;font-size:88px;line-height:1.04;letter-spacing:-.02em;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
-.say .gold{color:#c62a1d}
+.say .gold{color:#c62a1d}.say.right{align-self:flex-end}
+.say.right:after{left:auto;right:110px;border-width:62px 46px 0 18px}
 .say:after{content:"";position:absolute;left:110px;bottom:-62px;border-style:solid;border-width:62px 18px 0 46px;border-color:#fff transparent transparent transparent}
 .over{background:transparent}.over .h,.over .p,.over .k{text-shadow:0 4px 28px rgba(0,0,0,.65)}.over .p{color:#eef2fb}.over .k{color:#d7deea}
 .pill{background:#FFC629;color:#3b2a00;font-weight:700;font-size:46px;border-radius:999px;padding:26px 56px}
@@ -78,6 +80,7 @@ const SCENES = {
   jobcard: (s) => `<div class="demo">Demo · fictional business</div>` + h(s.text) + JOBCARD + opt('small', s.small),
   rule: (s) => `<div class="num">${esc(s.num)}</div><div class="rule"><div class="x${s.ok ? ' ok' : ''}">${s.ok ? '✓' : '✕'}</div>${h(s.text)}</div>` + opt('p', s.body),
   say: (s) => opt('k', s.kicker) + `<div class="say">${fmt(s.text)}</div>` + opt('p', s.body),
+  talk: (s) => opt('k', s.kicker) + `<div class="say${s.who === 'roo' ? ' right' : ''}">${fmt(s.text)}</div>`,
   end: (s) => `<div class="end"><img src="${ROOT}/brand/horizontal_dark.png">${h(s.text)}
     <div class="pill">Try the live demo · tradereach.net</div><div class="small">No signup. Runs in your browser.</div></div>`,
 };
@@ -124,9 +127,11 @@ export function mascotFor(item, footage = null) {
   return keys[hashOf(item.id) % keys.length];
 }
 export const moodOf = (item) => item.mood || (item.scenes.some((s) => s.t === 'say') ? 'angry' : 'happy');
-async function mascotPng(dir, kind, mood, id) {
-  const html = join(dir, 'mascot.html'), png = join(dir, 'mascot.png');
-  const hide = mood === 'angry' ? '#smile{display:none}' : '#brows,#frown{display:none}';
+async function mascotPng(dir, kind, mood, id, mouth = 0) {
+  const name = `mascot-${kind}-${mood}-${mouth}`;
+  const html = join(dir, `${name}.html`), png = join(dir, `${name}.png`);
+  const hide = '#mouth-open,#mouth-wide{display:none}' + (mood === 'angry' ? '#smile{display:none}' : '#brows,#frown{display:none}')
+    + (mouth ? `#smile,#frown{display:none}#mouth-${mouth === 1 ? 'open' : 'wide'}{display:inline!important}` : '');
   writeFileSync(html, `<!doctype html><meta charset="utf-8"><style>*{margin:0}body{background:transparent}svg{display:block;width:${MW}px;height:${MH}px}${hide}</style>
 <body>${readFileSync(MASCOTS[kind], 'utf8')}</body>`);
   return snap(html, png, MW, MH, true, id);
@@ -231,6 +236,71 @@ export async function footageFor(item, { env = process.env, fetchImpl = fetch } 
   } catch { return null; } // stock footage is a nice-to-have: never block a post over it
 }
 
+// Dialogue Reels: the koala (left) and the kangaroo (right, facing him) talk in turns. Each "talk" line is spoken in that
+// character's voice, his mouth follows the voice frame by frame and he bounces while talking; the other one listens.
+const CAST = { koala: 40, roo: 580 }; // x positions
+export const isDialogue = (item) => item.type === 'reel' && item.scenes.some((s) => s.t === 'talk');
+const ENC = ['-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-r', '30', '-g', '60', '-crf', '20',
+  '-maxrate', '8M', '-bufsize', '16M', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2'];
+
+async function dialogueVideo(item, frames, out, music) {
+  const FPS = 30, sprites = {}, segs = [];
+  // Each character keeps his mood between lines (a fuming koala stays fuming while he listens), starting with his first line's.
+  const mood = Object.fromEntries(Object.keys(CAST).map((k) => [k, item.scenes.find((s) => s.t === 'talk' && (s.who === 'roo' ? 'roo' : 'koala') === k)?.mood || 'happy']));
+  const sprite = async (kind, mood, mouth) => (sprites[`${kind}-${mood}-${mouth}`] ||= await mascotPng(frames, kind, mood, item.id, mouth));
+  for (const [i, s] of item.scenes.entries()) {
+    const seg = join(frames, `seg${i}.mp4`);
+    const bg = await shot(frames, `${i + 1}`, s, item, { hook: i === 0 && s.t !== 'talk', top: s.t !== 'end' });
+    if (s.t === 'end') { // clean end card, no cast
+      ff(['-loop', '1', '-t', '2.2', '-i', bg, '-f', 'lavfi', '-t', '2.2', '-i', 'anullsrc=r=48000:cl=stereo',
+        '-vf', `fps=${FPS},format=yuv420p`, ...ENC, '-t', '2.2', seg]);
+      segs.push(seg); continue;
+    }
+    const speaker = s.t === 'talk' ? (s.who === 'roo' ? 'roo' : 'koala') : null;
+    let secs = 1.8, wav = null, mouths = null;
+    if (speaker) {
+      wav = join(frames, `line${i}.wav`);
+      const v = await voiceLine({ who: speaker, text: s.text, mood: s.mood }, wav);
+      secs = v.secs + 0.35;
+      mouths = mouthFrames(wav, Math.round(secs * FPS), v.voiced);
+    }
+    const n = Math.round(secs * FPS);
+    const inputs = ['-loop', '1', '-t', secs.toFixed(2), '-i', bg];
+    const graph = [`[0:v]fps=${FPS},format=yuv420p[bg]`];
+    let last = 'bg';
+    for (const [k, kind] of Object.keys(CAST).entries()) {
+      const talking = kind === speaker;
+      if (talking && s.mood) mood[kind] = s.mood;
+      const seq = talking ? mouths : Array(n).fill(0);
+      const lines = [];
+      for (let f = 0; f < n;) { // run-length: one concat entry per mouth shape held
+        let g = f; while (g < n && seq[g] === seq[f]) g++;
+        lines.push(`file '${await sprite(kind, mood[kind], seq[f])}'`, `duration ${((g - f) / FPS).toFixed(4)}`);
+        f = g;
+      }
+      lines.push(lines.at(-2)); // the concat demuxer needs the last file repeated to honour its duration
+      const list = join(frames, `seq${i}-${kind}.txt`);
+      writeFileSync(list, lines.join('\n'));
+      inputs.push('-f', 'concat', '-safe', '0', '-i', list);
+      const [amp, hz] = talking ? [14, 3] : [5, 1];
+      graph.push(`[${k + 1}:v]fps=${FPS},format=rgba${kind === 'roo' ? ',hflip' : ''}[m${k}]`,
+        `[${last}][m${k}]overlay=x=${CAST[kind]}:y='${MY}+${amp}*sin(2*PI*${hz}*t)':eof_action=repeat[o${k}]`);
+      last = `o${k}`;
+    }
+    const a = Object.keys(CAST).length + 1;
+    inputs.push(...(wav ? ['-i', wav] : ['-f', 'lavfi', '-t', secs.toFixed(2), '-i', 'anullsrc=r=48000:cl=stereo']));
+    ff([...inputs, '-filter_complex', graph.join(';'), '-map', `[${last}]`, '-map', `${a}:a`, ...ENC, '-t', secs.toFixed(2), seg]);
+    segs.push(seg);
+  }
+  const list = join(frames, 'segs.txt'), joined = join(frames, 'joined.mp4');
+  writeFileSync(list, segs.map((f) => `file '${f}'`).join('\n'));
+  ff(['-f', 'concat', '-safe', '0', '-i', list, '-c', 'copy', joined]);
+  if (!music) { ff(['-i', joined, '-c', 'copy', '-movflags', '+faststart', out]); return; }
+  ff(['-i', joined, '-stream_loop', '-1', '-i', music, '-filter_complex',
+    '[1:a]volume=0.16[m];[0:a][m]amix=inputs=2:duration=first:normalize=0[aud]', '-map', '0:v', '-map', '[aud]',
+    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-movflags', '+faststart', out]); // music bed under the voices
+}
+
 // Returns the list of output files, in posting order.
 export async function renderItem(item, outRoot = join(ROOT, 'out')) {
   if (!FMT[item.type]) throw new Error(`unknown type ${item.type}`);
@@ -238,6 +308,12 @@ export async function renderItem(item, outRoot = join(ROOT, 'out')) {
   const dir = join(resolve(outRoot), item.id), frames = join(dir, 'frames');
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
+  if (isDialogue(item)) {
+    const files = [join(dir, `${item.id}.mp4`)];
+    await dialogueVideo(item, frames, files[0], item.music === false ? null : trackFor(item.id));
+    if (!process.env.KEEP_FRAMES) rmSync(frames, { recursive: true, force: true });
+    return files;
+  }
   const footage = await footageFor(item);
   const mascot = mascotFor(item, footage);
   const pngs = [];

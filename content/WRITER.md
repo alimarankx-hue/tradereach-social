@@ -31,7 +31,14 @@ Most Reels star our mascot, a koala or kangaroo tradie, who has just lost a job 
   "f#@!ing", "sh#t", "c#@t". In captions use asterisks: "f***", "sh*t", "c*nt". Unmasked swear words are blocked.
 - He's angry at the situation or himself, never at the caller, customers, women or any group. No slurs (blocked).
 - The funny rant comes first, then the fix: TradeReach texts the caller back so the job isn't lost. Facts still only from facts.md.
-- Set `"mascot": "koala"` or `"roo"` (or `"none"`) and use `say` scenes for his lines. Mix it up: about 2 of the 3 daily Reels with the mascot.
+- **Best format: a talking sketch between the two mascots.** The koala (left) and the kangaroo (right) talk to each other out loud,
+  in real Australian voices, with their mouths moving. Write `talk` scenes: `{"t":"talk","who":"koala"|"roo","mood"?:"angry"|"happy","text":"..."}`.
+  Shape: a `title` hook, then 4–6 `talk` lines alternating between them, then the `end` scene (about 12–18 s in total).
+  Typical cast: one has just lost a job by missing a call (angry, swearing), the other ribs him ("ya muppet") and tells him
+  TradeReach texts the caller back. Swap who's angry from day to day. Every `talk` line is spoken aloud: under 45 characters,
+  natural spoken Aussie, masked swear words come out as a TV bleep.
+- Make 2 of the 3 daily Reels talking sketches; the third can be a solo mascot rant (`"mascot": "koala"|"roo"` with `say` scenes)
+  or a plain text Reel (`"mascot": "none"`).
 
 ## Accuracy (non-negotiable)
 - Only state what is in `content/facts.md`. If it isn't there, don't say it.

@@ -29,6 +29,8 @@ jobs:
       CHROME_PATH: /usr/bin/google-chrome
       FFMPEG_PATH: /usr/bin/ffmpeg
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }} # optional: real tradie footage behind Reels (pexels.com/api)
+      AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }} # Australian voices for the talking mascots (free tier)
+      AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5

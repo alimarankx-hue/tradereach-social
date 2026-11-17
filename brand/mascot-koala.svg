@@ -32,6 +32,8 @@
   <ellipse cx="196" cy="232" rx="12" ry="16" fill="#555b66" opacity=".8"/>
   <path id="smile" d="M184 312 Q210 330 236 312" stroke="#2c2f36" stroke-width="7" fill="none" stroke-linecap="round"/>
   <path id="frown" d="M184 322 Q210 302 236 322" stroke="#2c2f36" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <g id="mouth-open"><ellipse cx="210" cy="318" rx="24" ry="15" fill="#3a1418"/><ellipse cx="210" cy="325" rx="13" ry="6" fill="#e0707a"/></g>
+  <g id="mouth-wide"><ellipse cx="210" cy="320" rx="30" ry="27" fill="#3a1418"/><ellipse cx="210" cy="333" rx="17" ry="9" fill="#e0707a"/></g>
   <!-- arm holding phone -->
   <ellipse cx="312" cy="356" rx="30" ry="56" fill="url(#fur)" transform="rotate(-28 312 356)"/>
   <rect x="300" y="248" width="68" height="118" rx="14" fill="#0B1E3A" stroke="#1d3a66" stroke-width="5"/>
