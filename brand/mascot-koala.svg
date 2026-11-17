@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520">
+  <!-- TradeReach mascot: koala tradie (original artwork). Hard hat in brand gold, hi-vis vest, phone. -->
+  <defs>
+    <radialGradient id="fur" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#B9C1CC"/><stop offset="1" stop-color="#8F98A5"/></radialGradient>
+    <radialGradient id="ear" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#F6D2D6"/><stop offset="1" stop-color="#E6A9B0"/></radialGradient>
+  </defs>
+  <!-- body + vest -->
+  <rect x="112" y="300" width="196" height="200" rx="90" fill="url(#fur)"/>
+  <path d="M128 330 Q210 300 292 330 L300 498 L120 498 Z" fill="#FF7A1A"/>
+  <path d="M210 312 L210 498" stroke="#E5600A" stroke-width="6"/>
+  <rect x="124" y="392" width="172" height="20" fill="#E8EEF5" opacity=".95"/>
+  <rect x="122" y="438" width="176" height="20" fill="#E8EEF5" opacity=".95"/>
+  <!-- feet -->
+  <ellipse cx="160" cy="502" rx="42" ry="16" fill="#7D8693"/><ellipse cx="260" cy="502" rx="42" ry="16" fill="#7D8693"/>
+  <!-- ears -->
+  <circle cx="92" cy="150" r="78" fill="url(#fur)"/><circle cx="92" cy="154" r="48" fill="url(#ear)"/>
+  <circle cx="328" cy="150" r="78" fill="url(#fur)"/><circle cx="328" cy="154" r="48" fill="url(#ear)"/>
+  <!-- head -->
+  <ellipse cx="210" cy="205" rx="138" ry="124" fill="url(#fur)"/>
+  <ellipse cx="210" cy="250" rx="84" ry="60" fill="#C9D0D9" opacity=".7"/>
+  <!-- hard hat -->
+  <path d="M100 150 Q105 52 210 50 Q315 52 320 150 Z" fill="#FFC629"/>
+  <rect x="84" y="140" width="252" height="24" rx="12" fill="#F2B400"/>
+  <rect x="200" y="56" width="20" height="90" rx="8" fill="#F7D35C"/>
+  <!-- angry brows, hidden unless the scene is a rant -->
+  <g id="brows"><path d="M130 176 L182 190" stroke="#1d1f24" stroke-width="11" stroke-linecap="round"/><path d="M290 176 L238 190" stroke="#1d1f24" stroke-width="11" stroke-linecap="round"/></g>
+  <!-- eyes -->
+  <circle cx="158" cy="208" r="15" fill="#1d1f24"/><circle cx="163" cy="203" r="5" fill="#fff"/>
+  <circle cx="262" cy="208" r="15" fill="#1d1f24"/><circle cx="267" cy="203" r="5" fill="#fff"/>
+  <!-- nose + smile -->
+  <ellipse cx="210" cy="252" rx="40" ry="50" fill="#2c2f36"/>
+  <ellipse cx="196" cy="232" rx="12" ry="16" fill="#555b66" opacity=".8"/>
+  <path id="smile" d="M184 312 Q210 330 236 312" stroke="#2c2f36" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path id="frown" d="M184 322 Q210 302 236 322" stroke="#2c2f36" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- arm holding phone -->
+  <ellipse cx="312" cy="356" rx="30" ry="56" fill="url(#fur)" transform="rotate(-28 312 356)"/>
+  <rect x="300" y="248" width="68" height="118" rx="14" fill="#0B1E3A" stroke="#1d3a66" stroke-width="5"/>
+  <rect x="309" y="262" width="50" height="78" rx="6" fill="#1f5eff"/>
+  <circle cx="334" cy="301" r="16" fill="#c62a1d"/>
+  <path d="M327 296 q7 12 14 10" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <ellipse cx="326" cy="350" rx="26" ry="20" fill="#A3ACB8"/>
+</svg>

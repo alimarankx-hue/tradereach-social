@@ -17,6 +17,10 @@ const BANNED = [
   [/[\w.+-]+@[\w-]+\.\w+/, 'email address'],
   [/\b(?:https?:\/\/|www\.)(?!tradereach\.net)\S+|\b(?!tradereach\.net)[a-z0-9-]+\.(?:com|net|org|io|co|au)\b/i, 'outside link'],
   [/(^|\s)@\w/, '@mention'],
+  // Aussie swearing is part of the angry-tradie voice, but on screen and in captions it's always masked (f***, c*nt, sh*t),
+  // which keeps the joke while Instagram's text checks see no profanity.
+  [/\b(fuck\w*|cunt\w*|shit\w*|wank\w*|piss ?off|dickhead\w*)\b/i, 'unmasked swear word (on screen use comic style f#@!ing, sh#t; in captions f***, sh*t)'],
+  [/\b(retard\w*|f[a*]g{1,2}(ot)?s?|b[i*]tch\w*|wh[o*]re\w*|sl[u*]t\w*)\b/i, 'slur or insult (never)'],
 ];
 
 // Numbers that are fine: clock times, temperatures, slide numbers, "000", "6 min ago", hashtags.

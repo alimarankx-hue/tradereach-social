@@ -1,0 +1,14 @@
+{
+ "id": "sample-reel-04-angry-koala",
+ "type": "reel",
+ "pillar": "trade:electrician",
+ "mascot": "koala",
+ "scenes": [
+  {"t": "title", "kicker": "SPARKIES", "text": "Missed one call.\nLost the *job.*"},
+  {"t": "say", "text": "Oh you're *f#@!ing* joking."},
+  {"t": "say", "text": "He rang the next sparky. *Flamin' hell.*"},
+  {"t": "body", "text": "Next time it texts them *back* for you."},
+  {"t": "end", "text": "Missed the call? It still gets *answered.*"}
+ ],
+ "caption": "Up a ladder, phone buzzing in the back pocket, can't answer. By smoko they've rung someone else. 😤\nThe caller didn't hang around.\nTradeReach texts missed callers back straight away and sends you the job details, so you can ring back when you're off the tools.\n👉 Try the live demo at tradereach.net, no signup\n#sparky #electricianaustralia #tradielife #australiantradies"
+}

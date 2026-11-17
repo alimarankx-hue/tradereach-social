@@ -42,6 +42,11 @@ body.light{background:#fff;color:#0B1E3A}
   align-items:center;text-align:center;gap:48px;padding:var(--pad)}
 .end img{width:860px;mix-blend-mode:lighten}.end .gold{color:#FFC629}
 .hook{justify-content:flex-start;padding-top:330px}.hook .h{font-size:150px}.hook .h.m{font-size:120px}
+.top{justify-content:flex-start;padding-top:300px}.hook.mk .h{font-size:112px}
+.say{position:relative;align-self:flex-start;max-width:96%;background:#fff;color:#0B1E3A;border-radius:56px;padding:46px 54px;
+  font-weight:800;font-stretch:108%;font-size:88px;line-height:1.04;letter-spacing:-.02em;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.say .gold{color:#c62a1d}
+.say:after{content:"";position:absolute;left:110px;bottom:-62px;border-style:solid;border-width:62px 18px 0 46px;border-color:#fff transparent transparent transparent}
 .over{background:transparent}.over .h,.over .p,.over .k{text-shadow:0 4px 28px rgba(0,0,0,.65)}.over .p{color:#eef2fb}.over .k{color:#d7deea}
 .pill{background:#FFC629;color:#3b2a00;font-weight:700;font-size:46px;border-radius:999px;padding:26px 56px}
 .small{font-size:32px;color:#94A3B8}
@@ -72,27 +77,32 @@ const SCENES = {
   sms: (s) => `<div class="demo">Demo · fictional business</div>` + h(s.text) + `<div class="bubble">${esc(SMS)}</div>`,
   jobcard: (s) => `<div class="demo">Demo · fictional business</div>` + h(s.text) + JOBCARD + opt('small', s.small),
   rule: (s) => `<div class="num">${esc(s.num)}</div><div class="rule"><div class="x${s.ok ? ' ok' : ''}">${s.ok ? '✓' : '✕'}</div>${h(s.text)}</div>` + opt('p', s.body),
+  say: (s) => opt('k', s.kicker) + `<div class="say">${fmt(s.text)}</div>` + opt('p', s.body),
   end: (s) => `<div class="end"><img src="${ROOT}/brand/horizontal_dark.png">${h(s.text)}
     <div class="pill">Try the live demo · tradereach.net</div><div class="small">No signup. Runs in your browser.</div></div>`,
 };
 export const SCENE_TYPES = Object.keys(SCENES);
 
-async function shot(dir, name, scene, item, { hook = false, over = false } = {}) {
+async function shot(dir, name, scene, item, { hook = false, over = false, top = false } = {}) {
   const f = FMT[item.type];
   const html = join(dir, `${name}.html`), png = join(dir, `${name}.png`);
   const tag = item.type === 'carousel' ? '' : `<div class="tag"><img src="${ROOT}/brand/icon_gold.png"></div>`;
   writeFileSync(html, `<!doctype html><meta charset="utf-8"><style>${CSS}</style>
-<body class="${[item.type === 'carousel' && 'light', hook && 'hook', over && 'over'].filter(Boolean).join(' ')}" style="--w:${f.w}px;--h:${f.h}px;${f.vars}">${tag}${SCENES[scene.t](scene)}</body>`);
+<body class="${[item.type === 'carousel' && 'light', hook && 'hook', top && !hook && 'top', top && 'mk', over && 'over'].filter(Boolean).join(' ')}" style="--w:${f.w}px;--h:${f.h}px;${f.vars}">${tag}${SCENES[scene.t](scene)}</body>`);
+  return snap(html, png, f.w, f.h, over, item.id);
+}
+
+async function snap(html, png, w, h, transparent, id) {
   rmSync(png, { force: true });
   // Headless Chrome writes the screenshot but doesn't always exit, so wait for the file and then kill it.
   const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files',
     '--no-first-run', '--no-sandbox', `--user-data-dir=${PROFILE}`, '--force-device-scale-factor=1',
-    `--window-size=${f.w},${f.h}`, '--virtual-time-budget=3000', ...(over ? ['--default-background-color=00000000'] : []),
+    `--window-size=${w},${h}`, '--virtual-time-budget=3000', ...(transparent ? ['--default-background-color=00000000'] : []),
     `--screenshot=${png}`, `file://${html}`], { stdio: 'ignore' });
   for (let t = 0; t < 300 && !(existsSync(png) && statSync(png).size > 0); t++) await sleep(100);
   await sleep(300);
   chrome.kill('SIGKILL');
-  if (!existsSync(png)) throw new Error(`screenshot failed: ${item.id}/${name}`);
+  if (!existsSync(png)) throw new Error(`screenshot failed: ${id}/${basename(png)}`);
   return png;
 }
 
@@ -103,12 +113,31 @@ const ff = (args) => execFileSync(FFMPEG, ['-v', 'error', '-y', ...args], { stdi
 const MUSIC = existsSync(join(ROOT, 'assets/music')) ? readdirSync(join(ROOT, 'assets/music')).filter((f) => f.endsWith('.m4a')).sort() : [];
 const trackFor = (id) => MUSIC.length ? join(ROOT, 'assets/music', MUSIC[[...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % MUSIC.length]) : null;
 
+// Mascots: original koala and kangaroo tradies (brand/mascot-*.svg). Angry brows and a frown for rants.
+const MASCOTS = { koala: join(ROOT, 'brand/mascot-koala.svg'), roo: join(ROOT, 'brand/mascot-roo.svg') };
+const MW = 460, MH = 570, MX = 50, MY = 940; // bottom-left, above Instagram's caption area
+export function mascotFor(item, footage = null) {
+  if (item.type !== 'reel' || item.mascot === 'none') return null;
+  if (MASCOTS[item.mascot]) return item.mascot;
+  if (footage) return null; // real footage carries the Reel on its own unless a mascot is asked for
+  const keys = Object.keys(MASCOTS);
+  return keys[hashOf(item.id) % keys.length];
+}
+export const moodOf = (item) => item.mood || (item.scenes.some((s) => s.t === 'say') ? 'angry' : 'happy');
+async function mascotPng(dir, kind, mood, id) {
+  const html = join(dir, 'mascot.html'), png = join(dir, 'mascot.png');
+  const hide = mood === 'angry' ? '#smile{display:none}' : '#brows,#frown{display:none}';
+  writeFileSync(html, `<!doctype html><meta charset="utf-8"><style>*{margin:0}body{background:transparent}svg{display:block;width:${MW}px;height:${MH}px}${hide}</style>
+<body>${readFileSync(MASCOTS[kind], 'utf8')}</body>`);
+  return snap(html, png, MW, MH, true, id);
+}
+
 const FADE = 0.35;
 const TRANSITIONS = ['slideup', 'smoothleft', 'fade'];
 // The first 0.5 s decides whether people keep watching, so the hook scene punches in fast, then drifts slowly.
 const PUNCH = "if(lte(on,15),1.14-0.00933*on,1+0.0006*(on-15))";
 
-function video(pngs, secs, out, music, footage = null) {
+function video(pngs, secs, out, music, footage = null, mascot = null) {
   const fps = 30, frames = Math.round(secs * fps), n = pngs.length;
   const total = Math.max(3.2, secs * n - FADE * (n - 1)); // Meta minimum is 3 s
   const start = (i) => i * (secs - FADE);
@@ -133,7 +162,14 @@ function video(pngs, secs, out, music, footage = null) {
       last = `x${i}`;
     }
   }
-  const a = n + (footage ? 1 : 0); // audio input index
+  if (mascot) {
+    const m = n + (footage ? 1 : 0);
+    inputs.push('-loop', '1', '-t', total.toFixed(2), '-i', mascot.png);
+    graph.push(`[${m}:v]format=rgba[mz]`,
+      `[${last}][mz]overlay=x='${MX}+if(lt(t,0.7),9*sin(70*t),0)':y='${MY}+12*sin(2*PI*1.5*t)':enable='lt(t,${mascot.until.toFixed(2)})'[mo]`);
+    last = 'mo';
+  }
+  const a = n + (footage ? 1 : 0) + (mascot ? 1 : 0); // audio input index
   const audioIn = music ? ['-stream_loop', '-1', '-i', music] : ['-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=48000:cl=stereo'];
   graph.push(`[${a}:a]atrim=0:${total},afade=t=in:d=0.3,afade=t=out:st=${Math.max(0, total - 1).toFixed(2)}:d=1,volume=0.85[aud]`);
   ff([...inputs, ...audioIn,
@@ -203,13 +239,17 @@ export async function renderItem(item, outRoot = join(ROOT, 'out')) {
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
   const footage = await footageFor(item);
+  const mascot = mascotFor(item, footage);
   const pngs = [];
   for (const [i, s] of item.scenes.entries())
-    pngs.push(await shot(frames, `${i + 1}`, s, item, { hook: item.type === 'reel' && i === 0, over: Boolean(footage) && s.t !== 'end' }));
+    pngs.push(await shot(frames, `${i + 1}`, s, item, { hook: item.type === 'reel' && i === 0, over: Boolean(footage) && s.t !== 'end', top: Boolean(mascot) }));
   let files;
   if (isVideo(item)) {
     files = [join(dir, `${item.id}.mp4`)];
-    video(pngs, sceneSecs(item), files[0], item.music === false ? null : trackFor(item.id), footage);
+    const secs = sceneSecs(item), n = item.scenes.length;
+    const until = item.scenes.at(-1).t === 'end' ? (n - 1) * (secs - FADE) : 999; // the end card stays clean
+    const m = mascot ? { png: await mascotPng(frames, mascot, moodOf(item), item.id), until } : null;
+    video(pngs, secs, files[0], item.music === false ? null : trackFor(item.id), footage, m);
   } else {
     files = pngs.map((p, i) => join(dir, `${item.id}-${i + 1}.jpg`));
     pngs.forEach((p, i) => ff(['-i', p, '-q:v', '2', files[i]]));

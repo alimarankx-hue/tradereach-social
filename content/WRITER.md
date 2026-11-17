@@ -24,6 +24,15 @@ Hook style (examples; write fresh ones, don't reuse these word for word):
 Make people recognise themselves in the first two seconds. Write concrete scenes, not slogans. No generic motivation ("grind", "hustle", "level up").
 Tone: Australian English, tradie to tradie, plain, a bit of dry humour, confident, never hype.
 
+## Voice: the pissed-off Aussie tradie (owner's choice, Nov 2026)
+Most Reels star our mascot, a koala or kangaroo tradie, who has just lost a job because he couldn't answer the phone, and he's filthy about it.
+- Broad Australian slang and attitude: "mate", "flamin' hell", "ya muppet", "fair dinkum", "smoko", "arvo", "stone the crows", "bloody oath".
+- Swearing is fine but always masked. On screen use comic-strip style, never asterisks (they clash with highlights):
+  "f#@!ing", "sh#t", "c#@t". In captions use asterisks: "f***", "sh*t", "c*nt". Unmasked swear words are blocked.
+- He's angry at the situation or himself, never at the caller, customers, women or any group. No slurs (blocked).
+- The funny rant comes first, then the fix: TradeReach texts the caller back so the job isn't lost. Facts still only from facts.md.
+- Set `"mascot": "koala"` or `"roo"` (or `"none"`) and use `say` scenes for his lines. Mix it up: about 2 of the 3 daily Reels with the mascot.
+
 ## Accuracy (non-negotiable)
 - Only state what is in `content/facts.md`. If it isn't there, don't say it.
 - TradeReach is **rule-based automated text-back**. Never call it AI, AI-powered or smart assistant. ("TradeReach AI" appears only in the logo.)
@@ -48,7 +57,7 @@ Use it for topic ideas only. Don't quote figures from it.
 ```json
 {"day": "2026-11-12", "items": [ ...exactly 3 "reel" and 4 "story" (no carousels for now)... ]}
 ```
-Item: `{"type": "reel"|"carousel"|"story", "pillar": "problem"|"how-it-works"|"trade:<name>"|"tips"|"trust", "caption": "...", "scenes": [...]}`
+Item: `{"type": "reel"|"carousel"|"story", "mascot"?: "koala"|"roo"|"none", "pillar": "problem"|"how-it-works"|"trade:<name>"|"tips"|"trust", "caption": "...", "scenes": [...]}`
 - **caption** (reels and carousels only; stories have none): 3–6 short lines following problem → consequence → solution → CTA, then 3–5 relevant hashtags on the last line. Max 5 hashtags.
 - **Reel:** 3–5 scenes ending with an "end" scene. The whole Reel runs about 8 seconds, so every scene is one short line.
   **The first scene is everything:** people decide in under a second whether to keep watching (Nov 2026 Reels averaged ~1 s of watch time and stalled at 0–50 views).
@@ -67,6 +76,7 @@ Scenes. Use `*word*` to highlight one or two key words and `\n` for a line break
 - `{"t":"jobcard","text":"...","small"?:"..."}`: shows the fixed demo job summary, a *burst pipe in Bondi* (labelled demo)
   Use `sms` and `jobcard` **only in plumbing or general how-it-works posts**. In any other trade's post they would show a plumbing example, so use a `body` scene to describe the text-back and job summary instead.
 - `{"t":"rule","num":"01","ok":true|false,"text":"...","body"?:"..."}`: numbered carousel slide with ✓ or ✕
+- `{"t":"say","text":"..."}`: the mascot's line in a big comic speech bubble (`*word*` shows in red). Keep it under 45 characters.
 - `{"t":"end","text":"..."}`: logo plus the "Try the live demo · tradereach.net" button
 
 ## Before you finish

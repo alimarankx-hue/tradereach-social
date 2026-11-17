@@ -65,7 +65,7 @@ test('publishes due items once; a re-run does nothing', async () => {
   const args = { g, ig: 'ig', queue, ledger, save() {}, render: async () => ['a.mp4'], mediaUrl: (f) => f, now: NOW, log() {} };
   const r1 = await run(args);
   assert.equal(r1.published.length, 3); // 3 reels (daily cap)
-  assert.equal(r1.skipped.length, 1); // carousel waits: carousels are paused (cap 0)
+  assert.equal(r1.skipped.length, 2); // 4th reel waits (cap 3) and the carousel waits (carousels paused, cap 0)
   const publishes = g.calls.filter((c) => c.includes('media_publish')).length;
   await run(args);
   assert.equal(g.calls.filter((c) => c.includes('media_publish')).length, publishes);
@@ -158,4 +158,29 @@ test('footage: none without a key or clips; a Pexels failure never blocks a post
   assert.equal(await footageFor(item, { env: { PEXELS_API_KEY: 'k' }, fetchImpl: broken }), null);
   const empty = async () => ({ json: async () => ({ videos: [] }) });
   assert.equal(await footageFor(item, { env: { PEXELS_API_KEY: 'k' }, fetchImpl: empty }), null);
+});
+
+import { mascotFor, moodOf } from '../src/render.mjs';
+
+test('swearing must be masked; slurs are always blocked', () => {
+  const base = samples.find((s) => s.id.includes('angry-koala'));
+  assert.deepEqual(check(base), []);
+  for (const bad of ["Oh you're fucking joking", 'What a cunt of a day', 'Absolute shitshow']) {
+    assert.notDeepEqual(check({ ...base, caption: bad }), [], bad);
+  }
+  for (const ok of ["Oh you're f#@!ing joking", 'What a c*nt of a day', 'Absolute sh*tshow, mate']) {
+    assert.deepEqual(check({ ...base, caption: ok }), [], ok);
+  }
+  assert.notDeepEqual(check({ ...base, caption: 'Stop being a little b*tch' }), []);
+});
+
+test('mascot: chosen per reel, never on stories, off with footage unless asked; rants look angry', () => {
+  const reel = { id: 'r1', type: 'reel', scenes: [{ t: 'title', text: 'x' }] };
+  assert.ok(['koala', 'roo'].includes(mascotFor(reel)));
+  assert.equal(mascotFor({ ...reel, type: 'story' }), null);
+  assert.equal(mascotFor({ ...reel, mascot: 'none' }), null);
+  assert.equal(mascotFor(reel, '/clip.mp4'), null);
+  assert.equal(mascotFor({ ...reel, mascot: 'roo' }, '/clip.mp4'), 'roo');
+  assert.equal(moodOf({ scenes: [{ t: 'say' }] }), 'angry');
+  assert.equal(moodOf({ scenes: [{ t: 'title' }] }), 'happy');
 });
