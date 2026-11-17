@@ -177,7 +177,7 @@ test('swearing must be masked; slurs are always blocked', () => {
 
 test('mascot: chosen per reel, never on stories, off with footage unless asked; rants look angry', () => {
   const reel = { id: 'r1', type: 'reel', scenes: [{ t: 'title', text: 'x' }] };
-  assert.ok(['koala', 'roo'].includes(mascotFor(reel)));
+  assert.equal(mascotFor(reel), null); // off unless a post asks for one
   assert.equal(mascotFor({ ...reel, type: 'story' }), null);
   assert.equal(mascotFor({ ...reel, mascot: 'none' }), null);
   assert.equal(mascotFor(reel, '/clip.mp4'), null);

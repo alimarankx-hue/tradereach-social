@@ -25,6 +25,7 @@ Make people recognise themselves in the first two seconds. Write concrete scenes
 Tone: Australian English, tradie to tradie, plain, a bit of dry humour, confident, never hype.
 
 ## Voice: the pissed-off Aussie tradie (owner's choice, Nov 2026)
+**PAUSED (owner, 17 Nov): don't use `talk` or `say` scenes or `mascot` until further notice.** Keep the angry Aussie tone in the text scenes and captions only.
 Most Reels star our mascot, a koala or kangaroo tradie, who has just lost a job because he couldn't answer the phone, and he's filthy about it.
 - Broad Australian slang and attitude: "mate", "flamin' hell", "ya muppet", "fair dinkum", "smoko", "arvo", "stone the crows", "bloody oath".
 - Swearing is fine but always masked. On screen use comic-strip style, never asterisks (they clash with highlights):
