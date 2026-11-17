@@ -303,6 +303,18 @@
   "2026-11-16-story-4": {
    "at": "2026-11-17T03:22:19.035Z",
    "metrics": {}
+  },
+  "2026-11-17-carousel-1": {
+   "at": "2026-11-17T04:30:10.119Z",
+   "metrics": {
+    "reach": 0,
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "saved": 0,
+    "shares": 0,
+    "total_interactions": 0
+   }
   }
  },
  "account": {
